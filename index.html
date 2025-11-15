@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- BEGIN MIT LICENSE https://github.com/GrapheneOS/grapheneos.org/blob/main/LICENSE -->
+<!-- BEGIN MIT LICENSE -->
 <html lang="en" prefix="og: https://ogp.me/ns#">
     <head>
         <meta charset="utf-8"/>
@@ -8,7 +8,7 @@
         <meta name="theme-color" content="#212121"/>
         <meta name="color-scheme" content="dark light"/>
         <meta name="msapplication-TileColor" content="#ffffff"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="twitter:site" content="@GrapheneOS"/>
         <meta name="twitter:creator" content="@GrapheneOS"/>
         <meta property="og:title" content="GrapheneOS: the private and secure mobile OS"/>
@@ -23,39 +23,56 @@
         <link rel="canonical" href="https://grapheneos.org/"/>
         <link rel="icon" href="/favicon.ico"/>
         <link rel="icon" sizes="any" type="image/svg+xml" href="/favicon.svg"/>
-        <link rel="mask-icon" href="[[path|/mask-icon.svg]]" color="#1a1a1a"/>
+        <link rel="mask-icon" href="/gos/mask-icon.svg" color="#1a1a1a"/>
         <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
-        [[css|/main.css]]
+	<link rel="stylesheet" href="/gos/main.css">
         <link rel="manifest" href="/manifest.webmanifest"/>
         <link rel="license" href="/LICENSE.txt"/>
 	<!-- <link rel="me" href="https://grapheneos.social/@GrapheneOS"/> -->
-        [[js|/js/redirect.js]]
+	<script src="/gos/js/redirect.js"></script>
     </head>
     <body>
-        {% with current_page="/" %}
-            {% include "header.html" %}
-        {% endwith %}
+        <header>
+            <nav id="site-menu">
+                <ul>
+                    <li aria-current="page"><a href="/"><img src="/gos/mask-icon.svg" alt=""/>GrapheneOS</a></li>
+                    <li ><a href="/features">Features</a></li>
+                    <li ><a href="/install/">Install</a></li>
+                    <li ><a href="/build">Build</a></li>
+                    <li ><a href="/usage">Usage</a></li>
+                    <li ><a href="/faq">FAQ</a></li>
+                    <li ><a href="/releases">Releases</a></li>
+                    <li ><a href="/source">Source</a></li>
+                    <li ><a href="/history/">History</a></li>
+                    <li ><a href="/articles/">Articles</a></li>
+                    <li ><a href="/donate">Donate</a></li>
+                    <li ><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
         <main class="normalize" id="grapheneos">
             <div class="content hero">
 
                 <div>
 <!-- END MIT LICENSE -->
-<!-- BEGIN CC-BY-SA-4.0 LICENSE /LICENSE-CC-BY-SA-4.0 -->
+<!-- BEGIN CC-BY-SA-4.0 LICENSE -->
                     <h1><a href="#title">GrapheneOS译站</a></h1>
                     <p>关于GrapheneOS资料的个人翻译站点。施工中……</p>
 <!-- END CC-BY-SA-4.0 LICENSE -->
-<!-- BEGIN MIT LICENSE https://github.com/GrapheneOS/grapheneos.org/blob/main/LICENSE -->
+<!-- BEGIN MIT LICENSE -->
                 </div>
 
                 <figure class="device-img">
-                    <img class="phone-img" width="276" height="579" src="[[path|/pixel-7-pro.svg]]" alt=""/>
-                    <img class="phone-logo-img" width="200" height="200" src="[[path|/mask-icon.svg]]" alt=""/>
+                    <img class="phone-img" width="276" height="579" src="/gos/pixel-7-pro.svg" alt=""/>
+                    <img class="phone-logo-img" width="200" height="200" src="/gos/mask-icon.svg" alt=""/>
                 </figure>
 
             </div>
 
         </main>
-        {% include "footer.html" %}
+        <footer>
+            <a href="/"><img src="/gos/mask-icon.svg" width="512" height="512" alt=""/>GrapheneOS</a>
+        </footer>
     </body>
 </html>
 <!-- END MIT LICENSE -->
