@@ -1,4 +1,4 @@
-name: Validate and process static files
+name: Validate, process, and publish static files
 
 on: [pull_request, push]
 
@@ -21,5 +21,25 @@ jobs:
     - run: npm ci --ignore-scripts
     - run: 'pip install --require-hashes --only-binary :all: -r requirements.txt'
 
-    - name: process static
+    - name: Process static
       run: ./process-static
+    - name: Upload as github-pages
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: static-tmp/
+        name: github-pages
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: static
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy github-pages to github pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages

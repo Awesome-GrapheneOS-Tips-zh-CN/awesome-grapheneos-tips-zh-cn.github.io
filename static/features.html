@@ -2,21 +2,21 @@
 <html lang="en" prefix="og: https://ogp.me/ns#">
     <head>
         <meta charset="utf-8"/>
-        <title>Features overview | GrapheneOS</title>
-        <meta name="description" content="Overview of GrapheneOS features differentiating it from the Android Open Source Project (AOSP)."/>
+        <title>特色概览 | GrapheneOS</title>
+        <meta name="description" content="将GrapheneOS与安卓开源项目（AOSP）区别开来的特色功能概览。"/>
         <meta name="theme-color" content="#212121"/>
         <meta name="color-scheme" content="dark light"/>
         <meta name="msapplication-TileColor" content="#ffffff"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
         <meta name="twitter:site" content="@GrapheneOS"/>
         <meta name="twitter:creator" content="@GrapheneOS"/>
-        <meta property="og:title" content="GrapheneOS features overview"/>
-        <meta property="og:description" content="Overview of GrapheneOS features differentiating it from the Android Open Source Project (AOSP)."/>
+        <meta property="og:title" content="GrapheneOS特色概览"/>
+        <meta property="og:description" content="将GrapheneOS与安卓开源项目（AOSP）区别开来的特色功能概览。"/>
         <meta property="og:type" content="website"/>
         <meta property="og:image" content="https://grapheneos.org/opengraph.png"/>
         <meta property="og:image:width" content="512"/>
         <meta property="og:image:height" content="512"/>
-        <meta property="og:image:alt" content="GrapheneOS logo"/>
+        <meta property="og:image:alt" content="GrapheneOS标志"/>
         <meta property="og:site_name" content="GrapheneOS"/>
         <meta property="og:url" content="https://grapheneos.org/features"/>
         <link rel="canonical" href="https://grapheneos.org/features"/>
@@ -27,125 +27,115 @@
         [[css|/main.css]]
         <link rel="manifest" href="/manifest.webmanifest"/>
         <link rel="license" href="/LICENSE.txt"/>
-        <link rel="me" href="https://grapheneos.social/@GrapheneOS"/>
+	<!-- <link rel="me" href="https://grapheneos.social/@GrapheneOS"/> -->
         [[js|/js/redirect.js]]
     </head>
     <body>
-        {% with current_page="features" %}
+        {% with current_page="features", wip="wip" %}
             {% include "header.html" %}
         {% endwith %}
         <main id="features">
-            <h1><a href="#features">Features overview</a></h1>
+            <h1><a href="#features">特色功能概览</a></h1>
 
-            <p>GrapheneOS is a private and secure mobile operating system with great functionality
-            and usability. It starts from the strong baseline of the
-            <a href="https://source.android.com/">Android Open Source Project (AOSP)</a> and
-            takes great care to avoid increasing attack surface or hurting the strong security
-            model. GrapheneOS makes substantial improvements to both privacy and security through
-            many carefully designed features built to function against real adversaries. The
-            project cares a lot about usability and app compatibility so those are taken into
-            account for all of our features.</p>
+            <p>GraphenOS是一个注重隐私和安全的移动端操作系统，具有出色的功能性
+            和可用性。它从<a href="https://source.android.com/?hl=zh-cn">安卓开源项目
+            （AOSP）</a>这一强大的基准线开始，
+            极力避免增加攻击面或破坏其强大的安全
+            模型。GrapheneOS精心设计的诸多功能，旨在有效应对真实场景中的对手，
+            因而对隐私保护和信息安全都有大幅实质性的改善。项目
+            非常关注可用性和应用兼容性，因此在设计所有功能时都
+            考虑到了这些因素。</p>
 
-            <p>GrapheneOS is focused on substance rather than branding and marketing. It doesn't
-            take the typical approach of piling on a bunch of insecure features depending on the
-            adversaries not knowing about them and regressing actual privacy/security. It's a very
-            technical project building privacy and security into the OS rather than including
-            assorted unhelpful frills or bundling subjective third party apps choices.</p>
+            <p>GrapheneOS注重实质，而非品牌推广和市场营销。它不像
+            常见做法那样堆砌一批不安全的功能，然后指望对手
+            不知道这些功能的存在，实际上却让隐私性和安全性退步。它是一个非常
+            技术性的项目，将隐私和安全融入系统内，而不是囊括一些
+            不起效果的花哨功能或者捆绑一套主观选择的第三方应用。</p>
 
-            <p>GrapheneOS is also hard at work on filling in gaps from not bundling Google apps
-            and services into the OS. We aren't against users using Google services but it doesn't
-            belong integrated into the OS in an invasive way. GrapheneOS won't take the shortcut
-            of simply bundling a very incomplete and poorly secured third party reimplementation
-            of Google services into the OS. That wouldn't ever be something users could rely upon.
-            It will also always be chasing a moving target while offering poorer security than the
-            real thing if the focus is on simply getting things working without great care for
-            doing it robustly and securely.</p>
+            <p>GrapheneOS还在努力弥补拒绝捆绑谷歌应用和服务
+            所带来的空白。我们并不反对用户使用谷歌服务，但它不该
+            以侵犯的方式集成在操作系统中。GrapheneOS不会走捷径，仅仅
+            将一个非常不完整且安全性较差的第三方的谷歌服务重实现
+            捆绑在操作系统中。那样的做法永远无法供用户依靠。
+            即使目的是让功能得以运作而不在乎做法的
+            稳定性和安全性，那样也只会永远追赶一个不断移动的目标，
+            同时却只能提供比真实服务更差的安全性。</p>
 
-            <p>This page provides an overview of currently implemented features differentiating
-            GrapheneOS from AOSP. It doesn't document our many historical features that are no
-            longer included for one reason or another. Many of our features were implemented in
-            AOSP, Linux, <a href="https://llvm.org/">LLVM</a> and other projects GrapheneOS is
-            based on and those aren't listed here. In many cases, we've been involved in getting
-            those features implemented in core infrastructure projects.</p>
+            <p>本页面提供了目前GrapheneOS已实现的、与AOSP有差别的
+            功能概览。它不记述我们许多因各种原因
+            不再包含的历史功能。我们许多的功能已
+            在AOSP、Linux、<a href="https://llvm.org/">LLVM</a>和其他GrapheneOS所基于
+            的项目中实现了，那些内容不在此记述。我们多次长期参与了
+            将这些功能在核心基础设施项目中实现的工作。</p>
 
             <nav id="table-of-contents">
-                <h2><a href="#table-of-contents">Table of contents</a></h2>
+                <h2><a href="#table-of-contents">目录</a></h2>
 
                 <ul>
                     <li>
                         <a href="#grapheneos">GrapheneOS</a>
                         <ul>
                             <li>
-                                <a href="#exploit-protection">Defending against exploitation of
-                                unknown vulnerabilities</a>
+                                <a href="#exploit-protection">防范未知漏洞的利用</a>
                                 <ul>
-                                    <li><a href="#attack-surface-reduction">Attack surface
-                                    reduction</a>
+                                    <li><a href="#attack-surface-reduction">缩小攻击面</a>
                                         <ul>
-                                            <li><a href="#usb-c-port-and-pogo-pins-control">USB-C port and pogo pins control</a></li>
+                                            <li><a href="#usb-c-port-and-pogo-pins-control">USB-C接口和弹簧针控制</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#exploit-mitigations">Exploit
-                                    mitigations</a></li>
-                                    <li><a href="#improved-sandboxing">Improved
-                                    sandboxing</a></li>
-                                    <li><a href="#anti-persistence">Anti-persistence /
-                                    detection</a></li>
+                                    <li><a href="#exploit-mitigations">漏洞利用缓解</a></li>
+                                    <li><a href="#improved-sandboxing">改良的沙盒技术</a></li>
+                                    <li><a href="#anti-persistence">反持久化 / 检测</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#more-complete-patching">More complete patching</a></li>
-                            <li><a href="#sandboxed-google-play">Sandboxed Google Play</a></li>
+                            <li><a href="#more-complete-patching">更完整的补丁</a></li>
+                            <li><a href="#sandboxed-google-play">沙盒化谷歌服务</a></li>
                             <li><a href="#android-auto">Android Auto</a></li>
-                            <li><a href="#network-permission-toggle">Network permission toggle</a></li>
-                            <li><a href="#sensors-permission-toggle">Sensors permission toggle</a></li>
-                            <li><a href="#storage-scopes">Storage Scopes</a></li>
-                            <li><a href="#contact-scopes">Contact Scopes</a></li>
-                            <li><a href="#broad-carrier-support">Broad carrier support without invasive carrier access</a></li>
-                            <li><a href="#lte-only-mode">LTE-only mode</a></li>
-                            <li><a href="#wifi-privacy">Wi-Fi privacy</a></li>
-                            <li><a href="#network-location">Network location</a></li>
-                            <li><a href="#private-screenshots">Private screenshots</a></li>
-                            <li><a href="#closed-device-identifier-leaks">Closed device identifier leaks</a></li>
-                            <li><a href="#privacy-by-default">Privacy by default</a></li>
-                            <li><a href="#pin-scrambling">PIN scrambling</a></li>
-                            <li><a href="#two-factor-fingerprint-unlock">Two-factor fingerprint unlock</a></li>
-                            <li><a href="#supports-longer-passwords">Supports longer
-                            passwords</a></li>
-                            <li><a href="#auto-reboot">Auto reboot</a></li>
-                            <li><a href="#clearing-sensitive-data-from-memory">Clearing sensitive data from memory</a></li>
-                            <li><a href="#duress">Duress PIN/Password</a></li>
-                            <li><a href="#more-secure-fingerprint-unlock">More secure fingerprint
-                            unlock</a></li>
+                            <li><a href="#network-permission-toggle">网络权限开关</a></li>
+                            <li><a href="#sensors-permission-toggle">传感器权限开关</a></li>
+                            <li><a href="#storage-scopes">存储范畴</a></li>
+                            <li><a href="#contact-scopes">联系人范畴</a></li>
+                            <li><a href="#broad-carrier-support">广泛的运营商支持，不含侵犯式运营商访问权限</a></li>
+                            <li><a href="#lte-only-mode">仅LTE模式</a></li>
+                            <li><a href="#wifi-privacy">Wi-Fi隐私</a></li>
+                            <li><a href="#network-location">网络定位</a></li>
+                            <li><a href="#private-screenshots">私密截图</a></li>
+                            <li><a href="#closed-device-identifier-leaks">设备标识符泄漏的封闭</a></li>
+                            <li><a href="#privacy-by-default">隐私为默认</a></li>
+                            <li><a href="#pin-scrambling">数位密码乱序化</a></li>
+                            <li><a href="#two-factor-fingerprint-unlock">双重验证指纹解锁</a></li>
+                            <li><a href="#supports-longer-passwords">支持更长密码</a></li>
+                            <li><a href="#auto-reboot">自动重启</a></li>
+                            <li><a href="#clearing-sensitive-data-from-memory">清除内存中敏感数据</a></li>
+                            <li><a href="#duress">受胁迫紧急密码</a></li>
+                            <li><a href="#more-secure-fingerprint-unlock">更安全的指纹解锁</a></li>
                             <li>
-                                <a href="#improved-user-profiles">Improved user profiles</a>
+                                <a href="#improved-user-profiles">改良的多用户空间</a>
                                 <ul>
-                                    <li><a href="#more-user-profiles">More user profiles</a></li>
-                                    <li><a href="#end-session">End session</a></li>
-                                    <li><a href="#disabling-app-installation">Disabling app installation</a></li>
-                                    <li><a href="#install-available-apps">Install available apps</a></li>
-                                    <li><a href="#notification-forwarding">Notification forwarding</a></li>
+                                    <li><a href="#more-user-profiles">更多的用户数量</a></li>
+                                    <li><a href="#end-session">结束会话</a></li>
+                                    <li><a href="#disabling-app-installation">禁用应用安装</a></li>
+                                    <li><a href="#install-available-apps">安装可用应用</a></li>
+                                    <li><a href="#notification-forwarding">通知转发</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#grapheneos-app-repository">GrapheneOS app
-                            repository</a></li>
-                            <li><a href="#vanadium">Vanadium: hardened WebView and default
-                            browser</a></li>
-                            <li><a href="#auditor">Auditor app and attestation service</a></li>
-                            <li><a href="#grapheneos-camera">GrapheneOS Camera</a></li>
-                            <li><a href="#grapheneos-pdf-viewer">GrapheneOS PDF Viewer</a></li>
-                            <li><a href="#setup-wizard">GrapheneOS Setup Wizard</a></li>
-                            <li><a href="#encrypted-backups">Encrypted backups</a></li>
-                            <li><a href="#location-data-access-indicator">Location data access
-                            indicator</a></li>
-                            <li><a href="#user-installed-apps-can-be-disabled">User installed apps
-                            can be disabled</a></li>
-                            <li><a href="#improved-vpn-leak-blocking">Improved VPN leak blocking</a></li>
-                            <li><a href="#log-viewer-and-crash-reporting">Log viewer and user-facing crash reporting</a></li>
-                            <li><a href="#other-features">Other features</a></li>
+                            <li><a href="#grapheneos-app-repository">GrapheneOS应用仓库</a></li>
+                            <li><a href="#vanadium">Vanadium：强化的WebView及默认浏览器</a></li>
+                            <li><a href="#auditor">审计器应用和认证服务</a></li>
+                            <li><a href="#grapheneos-camera">GrapheneOS相机</a></li>
+                            <li><a href="#grapheneos-pdf-viewer">GrapheneOS PDF阅读器</a></li>
+                            <li><a href="#setup-wizard">GrapheneOS安装向导</a></li>
+                            <li><a href="#encrypted-backups">加密备份</a></li>
+                            <li><a href="#location-data-access-indicator">位置信息访问标志</a></li>
+                            <li><a href="#user-installed-apps-can-be-disabled">用户安装的应用
+                            可被禁用</a></li>
+                            <li><a href="#improved-vpn-leak-blocking">改善的VPN泄漏阻断</a></li>
+                            <li><a href="#log-viewer-and-crash-reporting">日志查看器和面向用户的崩溃报告</a></li>
+                            <li><a href="#other-features">其他功能</a></li>
                         </ul>
                     </li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#project">Project</a></li>
+                    <li><a href="#services">服务</a></li>
+                    <li><a href="#project">项目</a></li>
                 </ul>
             </nav>
 

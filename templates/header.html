@@ -1,18 +1,27 @@
 <header>
     <nav id="site-menu">
         <ul>
-            <li {% if current_page == "/" %}aria-current="page"{% endif %}><a href="/"><img src="[[path|/mask-icon.svg]]" alt=""/>GrapheneOS</a></li>
-            <li {% if current_page == "features" %}aria-current="page"{% endif %}><a href="/features">Features</a></li>
-            <li {% if current_page == "install" %}aria-current="page"{% endif %}><a href="/install/">Install</a></li>
-            <li {% if current_page == "build" %}aria-current="page"{% endif %}><a href="/build">Build</a></li>
-            <li {% if current_page == "usage" %}aria-current="page"{% endif %}><a href="/usage">Usage</a></li>
-            <li {% if current_page == "faq" %}aria-current="page"{% endif %}><a href="/faq">FAQ</a></li>
-            <li {% if current_page == "releases" %}aria-current="page"{% endif %}><a href="/releases">Releases</a></li>
-            <li {% if current_page == "source" %}aria-current="page"{% endif %}><a href="/source">Source</a></li>
-            <li {% if current_page == "history" %}aria-current="page"{% endif %}><a href="/history/">History</a></li>
-            <li {% if current_page == "articles" %}aria-current="page"{% endif %}><a href="/articles/">Articles</a></li>
-            <li {% if current_page == "donate" %}aria-current="page"{% endif %}><a href="/donate">Donate</a></li>
-            <li {% if current_page == "contact" %}aria-current="page"{% endif %}><a href="/contact">Contact</a></li>
+            <li {% if current_page == "/" %}aria-current="page"{% endif %}><a href="/"><img src="[[path|/mask-icon.svg]]" alt=""/>译站</a></li>
+            <li {% if current_page == "home" %}aria-current="page"{% endif %}><a href="/home">GrapheneOS</a></li>
+            <li {% if current_page == "features" %}aria-current="page"{% endif %}><a href="/features">特色</a></li>
+            <li {% if current_page == "install" %}aria-current="page"{% endif %}><a href="/install/">安装</a></li>
+            <li {% if current_page == "build" %}aria-current="page"{% endif %}><a href="/build">编译</a></li>
+            <li {% if current_page == "usage" %}aria-current="page"{% endif %}><a href="/usage">使用</a></li>
+            <li {% if current_page == "faq" %}aria-current="page"{% endif %}><a href="/faq">常见问题</a></li>
+            <li {% if current_page == "releases" %}aria-current="page"{% endif %}><a href="/releases">发布版本</a></li>
+            <li {% if current_page == "source" %}aria-current="page"{% endif %}><a href="/source">源代码</a></li>
+            <li {% if current_page == "history" %}aria-current="page"{% endif %}><a href="/history/">历史</a></li>
+            <li {% if current_page == "articles" %}aria-current="page"{% endif %}><a href="/articles/">文章</a></li>
+            <li {% if current_page == "donate" %}aria-current="page"{% endif %}><a href="/donate">捐助</a></li>
+            <li {% if current_page == "contact" %}aria-current="page"{% endif %}><a href="/contact">联系方式</a></li>
         </ul>
     </nav>
 </header>
+{% if wip != "done" %}
+<div class="content break outside-content">
+    <div class="notice outside-notice">
+        <h2 class="notice-heading" style="text-align: center">施工中……</h2>
+	<p>以下内容尚未完成，请谅解。</p>
+    </div>
+</div>
+{% endif %}

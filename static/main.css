@@ -343,6 +343,15 @@ main.normalize {
     margin-block: 1em;
 }
 
+.outside-content {
+    width: 100%;
+    padding: 0em;
+}
+
+.outside-notice {
+    margin: 1em;
+}
+
 .notice-heading {
     margin-block-start: 0;
 }

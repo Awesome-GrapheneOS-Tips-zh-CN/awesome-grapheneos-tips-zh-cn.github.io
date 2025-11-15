@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh" prefix="og: https://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8"/>
+        <title>GrapheneOS：专注隐私与安全的手机操作系统</title>
+        <meta name="description" content="GrapheneOS是一个专注于安全和隐私的移动端操作系统，兼容安卓应用。"/>
+        <meta name="theme-color" content="#212121"/>
+        <meta name="color-scheme" content="dark light"/>
+        <meta name="msapplication-TileColor" content="#ffffff"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+        <meta name="twitter:site" content="@GrapheneOS"/>
+        <meta name="twitter:creator" content="@GrapheneOS"/>
+        <meta property="og:title" content="GrapheneOS：专注隐私与安全的手机操作系统"/>
+        <meta property="og:description" content="GrapheneOS是一个专注于安全和隐私的移动端操作系统，兼容安卓应用。"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:image" content="https://grapheneos.org/opengraph.png"/>
+        <meta property="og:image:width" content="512"/>
+        <meta property="og:image:height" content="512"/>
+        <meta property="og:image:alt" content="GrapheneOS标志"/>
+        <meta property="og:site_name" content="GrapheneOS"/>
+        <meta property="og:url" content="https://grapheneos.org/"/>
+        <link rel="canonical" href="https://grapheneos.org/"/>
+        <link rel="icon" href="/favicon.ico"/>
+        <link rel="icon" sizes="any" type="image/svg+xml" href="/favicon.svg"/>
+        <link rel="mask-icon" href="[[path|/mask-icon.svg]]" color="#1a1a1a"/>
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+        [[css|/main.css]]
+        <link rel="manifest" href="/manifest.webmanifest"/>
+        <link rel="license" href="/LICENSE.txt"/>
+	<!-- <link rel="me" href="https://grapheneos.social/@GrapheneOS"/> -->
+        [[js|/js/redirect.js]]
+    </head>
+    <body>
+        {% with current_page="home", wip="done" %}
+            {% include "header.html" %}
+        {% endwith %}
+        <main class="normalize" id="grapheneos">
+            <div class="content hero">
+
+                <div>
+                    <h1><a href="#grapheneos">GrapheneOS</a></h1>
+                    <p>专注隐私与安全的手机操作系统，兼容安卓应用，是一个非营利开源项目。</p>
+                    <a class="button" href="/install/">安装GrapheneOS</a>
+                </div>
+
+                <figure class="device-img">
+                    <img class="phone-img" width="276" height="579" src="[[path|/pixel-7-pro.svg]]" alt=""/>
+                    <img class="phone-logo-img" width="200" height="200" src="[[path|/mask-icon.svg]]" alt=""/>
+                </figure>
+
+            </div>
+
+            <div class="surface">
+                <div class="content break">
+                    <p>了解GrapheneOS</p>
+                </div>
+            </div>
+
+            <div class="content">
+                <section id="about">
+                    <h2 class="start"><a href="#about">关于GrapheneOS</a></h2>
+
+                    <p>GrapheneOS（石墨烯操作系统）是一款专注于隐私保护和安全性的手机操作系统，兼容安卓应用，作为一个非营利<a href="/source">开源</a>项目进行开发。
+                    它致力于研发提高隐私与安全的技术手段，包括对沙盒机制、漏洞缓解措施和权限模型的实质性改善。
+                    GrapheneOS成立于2014年，<a href="/history/copperheados">曾被称为CopperheadOS</a>。</p>
+
+                    <p>GrapheneOS从底层开始，全面提升操作系统的隐私和安全性。
+                    它部署的技术可以将许多类别的漏洞全数缓解，让来自最常见类别的漏洞的利用难度大幅增加。
+                    它同时提高了操作系统和运行于其上的应用的安全性。
+                    应用的沙盒和其他安全边界也一并加以强化。
+                    GrapheneOS尽量避免它的隐私安全功能影响到用户体验。
+                    在理想情况下，这些功能可以设计成始终开启，且不会对用户体验造成任何干扰，也不会增加像额外配置选项那样的复杂性。
+                    这个理想并非每次都可以实现，GrapheneOS也确实添加了许多功能的开关，比如网络权限、传感器权限、设备锁定时设置的限定（比如USB-C和弹簧针接口、相机、快捷磁贴）等，以及一些更复杂的面向用户的隐私安全功能及其独有的用户体验。</p>
+
+                    <p>我们的<a href="/features">特色页面</a>概述了GrapheneOS在安卓开源项目（AOSP）基础上添加的大幅有实质意义的隐私安全改善。
+                    我们过去的许多功能已<a href="/faq#upstream">贡献给AOSP、Linux等项目来提高数十亿用户的隐私和安全</a>，因此它们不再列于我们的特色页面。</p>
+
+                    <p>官方发布的版本可以在<a href="/releases">发布版本</a>页面下载，而安装说明在<a href="/install/">安装</a>页面中。</p>
+
+                    <p>GrapheneOS还开发了多款专注于隐私和安全的应用和服务。
+                    Vanadium是一款经过安全强化的Chromium浏览器和网页视图，专为GrapheneOS打造。
+                    GrapheneOS还内置了我们专为安全设计的极简PDF阅读器，我们基于硬件、提供本地或远程设备验证的审计应用和认证服务，我们注重隐私和安全、新款风格的相机应用，以及由外部开发的Sedvault加密备份工具（最初为集成到GrapheneOS而开发)。</p>
+                </section>
+
+                <section id="never-google-services">
+                    <h2><a href="#never-google-services">永不内置谷歌应用或服务</a></h2>
+
+                    <p>GrapheneOS永远不会内置谷歌服务（Google Play服务）或其他谷歌服务的实现（如microG）。
+                    您可以通过我们的<a href="/usage#sandboxed-google-play">沙盒化谷歌服务兼容层</a>，将谷歌服务作为一套完全沙盒化的应用在设备上安装，而不向它授予任何特殊的系统权限。
+                    我们计划填补因没有内置谷歌服务和谷歌应用而带来的空缺的详情，请参见<a href="/faq#google-services">常见问题</a>部分。</p>
+                </section>
+
+                <section id="device-support">
+                    <h2><a href="/faq#device-support">设备支持</a></h2>
+
+                    <p class="end">请参见<a href="/faq#device-support">常见问题的所支持设备部分</a>。</p>
+                </section>
+            </div>
+        </main>
+        {% include "footer.html" %}
+    </body>
+</html>

@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" prefix="og: https://ogp.me/ns#">
+<html lang="zh" prefix="og: https://ogp.me/ns#">
     <head>
         <meta charset="utf-8"/>
-        <title>Source code | GrapheneOS</title>
-        <meta name="description" content="Source code for GrapheneOS."/>
+        <title>源代码 | GrapheneOS</title>
+        <meta name="description" content="GrapheneOS的源代码。"/>
         <meta name="theme-color" content="#212121"/>
         <meta name="color-scheme" content="dark light"/>
         <meta name="msapplication-TileColor" content="#ffffff"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
         <meta name="twitter:site" content="@GrapheneOS"/>
         <meta name="twitter:creator" content="@GrapheneOS"/>
-        <meta property="og:title" content="GrapheneOS source code"/>
-        <meta property="og:description" content="Source code for GrapheneOS."/>
+        <meta property="og:title" content="GrapheneOS源代码"/>
+        <meta property="og:description" content="GrapheneOS的源代码。"/>
         <meta property="og:type" content="website"/>
         <meta property="og:image" content="https://grapheneos.org/opengraph.png"/>
         <meta property="og:image:width" content="512"/>
         <meta property="og:image:height" content="512"/>
-        <meta property="og:image:alt" content="GrapheneOS logo"/>
+        <meta property="og:image:alt" content="GrapheneOS标志"/>
         <meta property="og:site_name" content="GrapheneOS"/>
         <meta property="og:url" content="https://grapheneos.org/source"/>
         <link rel="canonical" href="https://grapheneos.org/source"/>
@@ -27,59 +27,58 @@
         [[css|/main.css]]
         <link rel="manifest" href="/manifest.webmanifest"/>
         <link rel="license" href="/LICENSE.txt"/>
-        <link rel="me" href="https://grapheneos.social/@GrapheneOS"/>
+	<!-- <link rel="me" href="https://grapheneos.social/@GrapheneOS"/> -->
     </head>
     <body>
-        {% with current_page="source" %}
+        {% with current_page="source", wip="done" %}
             {% include "header.html" %}
         {% endwith %}
         <main id="source">
-            <h1><a href="#source">Source code</a></h1>
+            <h1><a href="#source">源代码</a></h1>
 
-            <p>GrapheneOS is an <a href="https://opensource.org/osd">open source</a> project with
-            an open development process.</p>
+            <p>GrapheneOS是一个<a href="https://opensource.org/osd">开源</a>项目，拥有
+            开放的开发过程。</p>
 
-            <p>The GrapheneOS sources are hosted in the
-            <a href="https://github.com/GrapheneOS">GrapheneOS organization on GitHub</a>. Since
-            there are many repositories, this page aims to provide a guide for it. See the
-            <a href="/contact#reporting-issues">reporting issues section on the contact page</a>
-            for an comparable overview of where issues should be filed.</p>
+            <p>GrapheneOS的源代码托管在<a
+            href="https://github.com/GrapheneOS">GitHub上的GrapheneOS组织</a>中。由于
+            项目有大量代码仓库，本页旨在为源码提供一个导引。在<a
+            href="/contact#reporting-issues">联系方式页面的报告问题部分</a>有一个
+            类似的导引，详述了问题报告应提交的具体位置。</p>
 
             <nav id="table-of-contents">
-                <h2><a href="#table-of-contents">Table of contents</a></h2>
+                <h2><a href="#table-of-contents">目录</a></h2>
 
                 <ul>
                     <li><a href="#grapheneos">GrapheneOS</a></li>
-                    <li><a href="#standalone-apps">Standalone apps</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#utilities">Utilities</a></li>
-                    <li><a href="#archive">Archive</a></li>
+                    <li><a href="#standalone-apps">独立应用</a></li>
+                    <li><a href="#services">服务</a></li>
+                    <li><a href="#utilities">工具</a></li>
+                    <li><a href="#archive">旧档案</a></li>
                 </ul>
             </nav>
 
             <section id="grapheneos">
                 <h2><a href="#grapheneos">GrapheneOS</a></h2>
 
-                <p>The operating system source tree includes hundreds of repositories. Many of
-                these are only used for debugging, testing or development and are not actually
-                part of what gets used for building a production release. The manifest repository
-                references all of these. Most of these are used unmodified from the Android Open
-                Source Project (AOSP). A few dozen of the repositories including most of the core
-                OS are either forked from AOSP or are unique to GrapheneOS.</p>
+                <p>操作系统的源代码树包含数百个仓库。其中许多
+                仓库仅用于调试、测试或开发，并不属于实际
+                用于构建生产版本的代码。清单仓库中
+                列出了所有这些仓库。大多数仓库直接使用安卓开源
+                项目（AOSP）的内容，未经修改。几十个仓库，包括操作系统的
+                大部分核心部分，都是从AOSP分支出来，或是由GrapheneOS独有的。</p>
 
-                <p>The operating system has a unified build system, but some components like
-                Chromium are too complex to fit into it so they're included as prebuilts instead
-                of porting them to the AOSP build system. This is also done for developer
-                convenience and bootstrapping, to avoid needing to build all the native /
-                cross-compilation toolchains for each host and target platform combination, etc.
-                The prebuilts can all be built from source if desired. The build instructions will
-                be expanded to cover all of this in the future.</p>
+                <p>操作系统有一套统一的构建系统，但像Chromium的一些
+                组件过于复杂，无法整合，因此它们以预构建包的形式加入构建，而非
+                移植到AOSP构建系统中。这也是为了方便开发者和
+                启动构建流程，避免需要为每个构建平台和目标平台的组合
+                分别搭建原生或交叉编译工具链的困境。构建指南将在未来
+                扩写，来涵盖所有这些内容。</p>
 
-                <p>For a full list of the repositories in the OS source tree, look at the
-                <a href="https://github.com/GrapheneOS/platform_manifest/blob/13/default.xml">default.xml
-                list in the manifest repository</a>.</p>
+                <p>如果您想查看操作系统源代码树中的所有仓库，请见<a
+                href="https://github.com/GrapheneOS/platform_manifest/blob/13/default.xml">清单
+                仓库的default.xml列表</a>。</p>
 
-                <p>GrapheneOS forks of AOSP source tree repositories:</p>
+                <p>AOSP源代码树仓库的GrapheneOS分支仓库：</p>
 
                 <ul>
                     <li><a href="https://github.com/GrapheneOS/device_common">device_common</a></li>
@@ -104,7 +103,7 @@
                     <li><a href="https://github.com/GrapheneOS/device_google_zuma-sepolicy">device_google_zuma-sepolicy</a></li>
                     <li><a href="https://github.com/GrapheneOS/device_google_zumapro">device_google_zumapro</a></li>
                     <li><a href="https://github.com/GrapheneOS/device_google_zumapro-sepolicy">device_google_zumapro-sepolicy</a></li>
-                    <li><a href="https://github.com/GrapheneOS/kernel_configs">kernel_configs</a>: Base and recommended kernel configurations. The base configurations are enforced by the VTS and are modified to permit GrapheneOS changes.</li>
+                    <li><a href="https://github.com/GrapheneOS/kernel_configs">kernel_configs</a>: 基础和推荐的内核配置。基础配置由供应商测试套件（VTS）确保，并加以修改，以允许GrapheneOS所做的变更。</li>
                     <li><a href="https://github.com/GrapheneOS/platform_art">platform_art</a></li>
                     <li><a href="https://github.com/GrapheneOS/platform_bionic">platform_bionic</a></li>
                     <li><a href="https://github.com/GrapheneOS/platform_bootable_recovery">platform_bootable_recovery</a></li>
@@ -124,7 +123,7 @@
                     <li><a href="https://github.com/GrapheneOS/platform_hardware_google_pixel-sepolicy">platform_hardware_google_pixel-sepolicy</a></li>
                     <li><a href="https://github.com/GrapheneOS/platform_hardware_interfaces">platform_hardware_interfaces</a></li>
                     <li><a href="https://github.com/GrapheneOS/platform_libcore">platform_libcore</a></li>
-                    <li><a href="https://github.com/GrapheneOS/platform_manifest">platform_manifest</a>: Manifest for OS repositories</li>
+                    <li><a href="https://github.com/GrapheneOS/platform_manifest">platform_manifest</a>: 操作系统仓库的清单</li>
                     <li><a href="https://github.com/GrapheneOS/platform_packages_apps_Calendar">platform_packages_apps_Calendar</a></li>
                     <li><a href="https://github.com/GrapheneOS/platform_packages_apps_CellBroadcastReceiver">platform_packages_apps_CellBroadcastReceiver</a></li>
                     <li><a href="https://github.com/GrapheneOS/platform_packages_apps_Contacts">platform_packages_apps_Contacts</a></li>
@@ -171,51 +170,51 @@
                     <li><a href="https://github.com/GrapheneOS/platform_tools_metalava">platform_tools_metalava</a></li>
                 </ul>
 
-                <p>GrapheneOS forks of AOSP kernel prebuilt repositories with the builds replaced with the GrapheneOS kernels built from the source repositories listed in the next section:</p>
+                <p>AOSP内核预构建仓库的GrapheneOS分支仓库，但将其中的构建替换为用下一部分所列代码构建的GrapheneOS内核：</p>
 
                 <ul>
-                    <li><a href="https://github.com/GrapheneOS/device_google_raviole-kernels_6.1">device_google_raviole-kernels_6.1</a>: Pixel 6 and Pixel 6 Pro kernel prebuilts.</li>
-                    <li><a href="https://github.com/GrapheneOS/device_google_bluejay-kernels_6.1">device_google_bluejay-kernels_6.1</a>: Pixel 6a kernel prebuilts.</li>
-                    <li><a href="https://github.com/GrapheneOS/device_google_pantah-kernels_6.1">device_google_pantah-kernels_6.1</a>: Pixel 7 and Pixel 7 Pro kernel prebuilts.</li>
-                    <li><a href="https://github.com/GrapheneOS/device_google_lynx-kernels_6.1">device_google_lynx-kernels_6.1</a>: Pixel 7a kernel prebuilts.</li>
-                    <li><a href="https://github.com/GrapheneOS/device_google_tangorpro-kernels_6.1">device_google_tangorpro-kernels_6.1</a>: Pixel Tablet kernel prebuilts.</li>
-                    <li><a href="https://github.com/GrapheneOS/device_google_felix-kernels_6.1">device_google_felix-kernels_6.1</a>: Pixel Fold kernel prebuilts.</li>
-                    <li><a href="https://github.com/GrapheneOS/device_google_shusky-kernels_6.1">device_google_shusky-kernels_6.1</a>: Pixel 8 and Pixel 8 Pro kernel prebuilts.</li>
-                    <li><a href="https://github.com/GrapheneOS/device_google_akita-kernels_6.1">device_google_akita-kernels_6.1</a>: Pixel 8a kernel prebuilts.</li>
-                    <li><a href="https://github.com/GrapheneOS/device_google_caimito-kernels_6.1">device_google_caimito-kernels_6.1</a>: Pixel 9, Pixel 9 Pro and Pixel 9 Pro XL kernel prebuilts.</li>
-                    <li><a href="https://github.com/GrapheneOS/device_google_comet-kernels_6.1">device_google_comet-kernels_6.1</a>: Pixel 9 Pro Fold kernel prebuilts.</li>
-                    <li><a href="https://github.com/GrapheneOS/device_google_tegu-kernels_6.1">device_google_tegu-kernels_6.1</a>: Pixel 9a kernel prebuilts.</li>
+                    <li><a href="https://github.com/GrapheneOS/device_google_raviole-kernels_6.1">device_google_raviole-kernels_6.1</a>: Pixel 6和Pixel 6 Pro内核预构建。</li>
+                    <li><a href="https://github.com/GrapheneOS/device_google_bluejay-kernels_6.1">device_google_bluejay-kernels_6.1</a>: Pixel 6a内核预构建。</li>
+                    <li><a href="https://github.com/GrapheneOS/device_google_pantah-kernels_6.1">device_google_pantah-kernels_6.1</a>: Pixel 7和Pixel 7 Pro内核预构建。</li>
+                    <li><a href="https://github.com/GrapheneOS/device_google_lynx-kernels_6.1">device_google_lynx-kernels_6.1</a>: Pixel 7a内核预构建。</li>
+                    <li><a href="https://github.com/GrapheneOS/device_google_tangorpro-kernels_6.1">device_google_tangorpro-kernels_6.1</a>: Pixel Tablet内核预构建。</li>
+                    <li><a href="https://github.com/GrapheneOS/device_google_felix-kernels_6.1">device_google_felix-kernels_6.1</a>: Pixel Fold内核预构建。</li>
+                    <li><a href="https://github.com/GrapheneOS/device_google_shusky-kernels_6.1">device_google_shusky-kernels_6.1</a>: Pixel 8和Pixel 8 Pro内核预构建。</li>
+                    <li><a href="https://github.com/GrapheneOS/device_google_akita-kernels_6.1">device_google_akita-kernels_6.1</a>: Pixel 8a内核预构建。</li>
+                    <li><a href="https://github.com/GrapheneOS/device_google_caimito-kernels_6.1">device_google_caimito-kernels_6.1</a>: Pixel 9、Pixel 9 Pro和Pixel 9 Pro XL内核预构建。</li>
+                    <li><a href="https://github.com/GrapheneOS/device_google_comet-kernels_6.1">device_google_comet-kernels_6.1</a>: Pixel 9 Pro Fold内核预构建。</li>
+                    <li><a href="https://github.com/GrapheneOS/device_google_tegu-kernels_6.1">device_google_tegu-kernels_6.1</a>: Pixel 9a内核预构建。</li>
                 </ul>
 
-                <p>GrapheneOS forks of AOSP kernel repositories:</p>
+                <p>AOSP内核仓库的GrapheneOS分支仓库：</p>
 
                 <ul>
-                    <li><a href="https://github.com/GrapheneOS/kernel_manifest-6.1">kernel_manifest-6.1</a>: Kernel manifest for the Generic Linux 6.1 kernel.</li>
-                    <li><a href="https://github.com/GrapheneOS/kernel_common-6.1">kernel_common-6.1</a>: Linux 6.1 LTS branch.</li>
-                    <li><a href="https://github.com/GrapheneOS/kernel_manifest-6.6">kernel_manifest-6.6</a>: Kernel manifest for the Generic Linux 6.6 kernel.</li>
-                    <li><a href="https://github.com/GrapheneOS/kernel_common-6.6">kernel_common-6.6</a>: Linux 6.6 LTS branch.</li>
-                    <li><a href="https://github.com/GrapheneOS/kernel_manifest-6.12">kernel_manifest-6.12</a>: Kernel manifest for the Generic Linux 6.12 kernel.</li>
-                    <li><a href="https://github.com/GrapheneOS/kernel_common-6.12">kernel_common-6.12</a>: Linux 6.12 LTS branch.</li>
+                    <li><a href="https://github.com/GrapheneOS/kernel_manifest-6.1">kernel_manifest-6.1</a>: 通用Linux 6.1内核的内核清单。</li>
+                    <li><a href="https://github.com/GrapheneOS/kernel_common-6.1">kernel_common-6.1</a>: Linux 6.1 LTS分支。</li>
+                    <li><a href="https://github.com/GrapheneOS/kernel_manifest-6.6">kernel_manifest-6.6</a>: 通用Linux 6.6内核的内核清单。</li>
+                    <li><a href="https://github.com/GrapheneOS/kernel_common-6.6">kernel_common-6.6</a>: Linux 6.6 LTS分支。</li>
+                    <li><a href="https://github.com/GrapheneOS/kernel_manifest-6.12">kernel_manifest-6.12</a>: 通用Linux 6.12内核的内核清单。</li>
+                    <li><a href="https://github.com/GrapheneOS/kernel_common-6.12">kernel_common-6.12</a>: Linux 6.12 LTS分支。</li>
 
-                    <li><a href="https://gitlab.com/grapheneos/kernel_pixel">kernel_pixel</a>: Monolithic repository for 6th/7th/8th/9th gen Pixel kernels.</li>
-                    <li><a href="https://gitlab.com/grapheneos/kernel_pixel_muzel">kernel_pixel_muzel</a>: Monolithic repository for 10th gen Pixel kernels.</li>
+                    <li><a href="https://gitlab.com/grapheneos/kernel_pixel">kernel_pixel</a>: 第六、七、八、九代Pixel内核的单体仓库。</li>
+                    <li><a href="https://gitlab.com/grapheneos/kernel_pixel_muzel">kernel_pixel_muzel</a>: 第十代Pixel内核的单体仓库。</li>
                 </ul>
 
-                <p>Repositories added by GrapheneOS:</p>
+                <p>由GrapheneOS添加的仓库：</p>
 
                 <ul>
                     <li><a href="https://github.com/GrapheneOS/adevtool">adevtool</a></li>
                     <li><a href="https://github.com/GrapheneOS/branding">branding</a></li>
                     <li><a href="https://github.com/GrapheneOS/hardened_malloc">hardened_malloc</a></li>
-                    <li><a href="https://github.com/GrapheneOS/platform_external_AppStore">platform_external_AppStore</a>: App Store prebuilt</li>
-                    <li><a href="https://github.com/GrapheneOS/platform_external_Auditor">platform_external_Auditor</a>: Auditor app prebuilt</li>
-                    <li><a href="https://github.com/GrapheneOS/platform_external_Camera">platform_external_Camera</a>: Camera app prebuilt</li>
+                    <li><a href="https://github.com/GrapheneOS/platform_external_AppStore">platform_external_AppStore</a>: 应用商店的预构建</li>
+                    <li><a href="https://github.com/GrapheneOS/platform_external_Auditor">platform_external_Auditor</a>: 审计应用的预构建</li>
+                    <li><a href="https://github.com/GrapheneOS/platform_external_Camera">platform_external_Camera</a>: 相机应用的预构建</li>
                     <li><a href="https://github.com/GrapheneOS/platform_external_GmsCompatConfig">platform_external_GmsCompatConfig</a></li>
                     <li><a href="https://github.com/GrapheneOS/platform_external_Info">platform_external_Info</a></li>
                     <li><a href="https://github.com/GrapheneOS/platform_external_Messaging">platform_external_Messaging</a></li>
-                    <li><a href="https://github.com/GrapheneOS/platform_external_PdfViewer">platform_external_PdfViewer</a>: PDF Viewer app prebuilt</li>
-                    <li><a href="https://github.com/GrapheneOS/platform_external_talkback">platform_external_talkback</a>: TalkBack app (GrapheneOS fork) prebuilt</li>
-                    <li><a href="https://gitlab.com/grapheneos/platform_external_vanadium">platform_external_vanadium</a>: Vanadium browser, WebView and library prebuilts</li>
+                    <li><a href="https://github.com/GrapheneOS/platform_external_PdfViewer">platform_external_PdfViewer</a>: PDF阅读器的预构建</li>
+                    <li><a href="https://github.com/GrapheneOS/platform_external_talkback">platform_external_talkback</a>: TalkBack应用（GrapheneOS分支版）的预构建</li>
+                    <li><a href="https://gitlab.com/grapheneos/platform_external_vanadium">platform_external_vanadium</a>: Vanadium浏览器、WebView和库的预构建</li>
                     <li><a href="https://github.com/GrapheneOS/platform_packages_apps_AppCompatConfig">platform_packages_apps_AppCompatConfig</a></li>
                     <li><a href="https://github.com/GrapheneOS/platform_packages_apps_CarrierConfig2">platform_packages_apps_CarrierConfig2</a></li>
                     <li><a href="https://github.com/GrapheneOS/platform_packages_apps_ExactCalculator">platform_packages_apps_ExactCalculator</a></li>
@@ -224,66 +223,66 @@
                     <li><a href="https://github.com/GrapheneOS/platform_packages_apps_NetworkLocation">platform_packages_apps_NetworkLocation</a></li>
                     <li><a href="https://github.com/GrapheneOS/platform_packages_apps_Seedvault">platform_packages_apps_Seedvault</a></li>
                     <li><a href="https://github.com/GrapheneOS/platform_packages_apps_SetupWizard2">platform_packages_apps_SetupWizard2</a></li>
-                    <li><a href="https://github.com/GrapheneOS/platform_packages_apps_Updater">platform_packages_apps_Updater</a>: OS update client</li>
+                    <li><a href="https://github.com/GrapheneOS/platform_packages_apps_Updater">platform_packages_apps_Updater</a>: 操作系统更新客户端</li>
                     <li><a href="https://github.com/GrapheneOS/script">script</a></li>
                     <li><a href="https://github.com/GrapheneOS/vendor_state">vendor_state</a></li>
                 </ul>
             </section>
 
             <section id="standalone-apps">
-                <h2><a href="#standalone-apps">Standalone apps</a></h2>
+                <h2><a href="#standalone-apps">独立应用</a></h2>
 
-                <p>These are standalone app projects developed by GrapheneOS and included in the
-                OS. This does not include the many apps included by AOSP without modifications by
-                GrapheneOS or with only minor modifications.</p>
+                <p>这些是由GrapheneOS开发并包含在操作系统中的独立应用项目。
+                这里不包括未经GrapheneOS修改或仅作少量修改
+                的AOSP内置应用。</p>
 
                 <ul>
-                    <li><a href="https://github.com/GrapheneOS/AppStore">App Store</a></li>
-                    <li><a href="https://github.com/GrapheneOS/Auditor">Auditor</a></li>
-                    <li><a href="https://github.com/GrapheneOS/Camera">Camera</a></li>
-                    <li><a href="https://github.com/GrapheneOS/Info">Info</a></li>
-                    <li><a href="https://github.com/GrapheneOS/Messaging">Messaging</a></li>
-                    <li><a href="https://github.com/GrapheneOS/PdfViewer">PDF Viewer</a></li>
-                    <li><a href="https://github.com/GrapheneOS/talkback">talkback</a>: GrapheneOS fork of the open source TalkBack screen reader</li>
-                    <li><a href="https://github.com/GrapheneOS/Vanadium">Vanadium</a>: Privacy and security focused Chromium-based browser and WebView</li>
+                    <li><a href="https://github.com/GrapheneOS/AppStore">应用商店</a></li>
+                    <li><a href="https://github.com/GrapheneOS/Auditor">审计器</a></li>
+                    <li><a href="https://github.com/GrapheneOS/Camera">相机</a></li>
+                    <li><a href="https://github.com/GrapheneOS/Info">信息</a></li>
+                    <li><a href="https://github.com/GrapheneOS/Messaging">短信</a></li>
+                    <li><a href="https://github.com/GrapheneOS/PdfViewer">PDF阅读器</a></li>
+                    <li><a href="https://github.com/GrapheneOS/talkback">talkback</a>: 开源屏幕阅读器TalkBack的GrapheneOS分支版</li>
+                    <li><a href="https://github.com/GrapheneOS/Vanadium">Vanadium</a>: 注重隐私和安全的基于Chromium的浏览器和WebView</li>
                 </ul>
             </section>
 
             <section id="services">
-                <h2><a href="#services">Services</a></h2>
+                <h2><a href="#services">服务</a></h2>
 
                 <ul>
-                    <li><a href="https://github.com/GrapheneOS/infrastructure">infrastructure</a>: Shared server infrastructure</li>
-                    <li><a href="https://github.com/GrapheneOS/AttestationServer">AttestationServer</a>: attestation.app remote attestation server</li>
-                    <li><a href="https://github.com/GrapheneOS/grapheneos.org">grapheneos.org</a>: Servers for our website, HTTP/HTTPS connectivity checks, HTTPS network time, NTP (for Qualcomm XTRA), Broadcom PSDS cache, Samsung PSDS cache, Qualcomm PSDS (XTRA) cache, SUPL proxy, attestation key provisioning proxy, Vanadium component update check/download proxy, network location proxy and geocoding proxy</li>
-                    <li><a href="https://github.com/GrapheneOS/releases.grapheneos.org">releases.grapheneos.org</a>: OS update and app repository servers</li>
-                    <li><a href="https://github.com/GrapheneOS/apps.grapheneos.org">apps.grapheneos.org</a>: Application repository</li>
-                    <li><a href="https://github.com/GrapheneOS/mail.grapheneos.org">mail.grapheneos.org</a>: Mail server</li>
-                    <li><a href="https://github.com/GrapheneOS/matrix.grapheneos.org">matrix.grapheneos.org</a>: Matrix and Element Web server</li>
-                    <li><a href="https://github.com/GrapheneOS/ns1.grapheneos.org">ns1.grapheneos.org</a>: Authoritative DNS servers</li>
-                    <li><a href="https://github.com/GrapheneOS/discuss.grapheneos.org">discuss.grapheneos.org</a>: Discussion forum server</li>
-                    <li><a href="https://github.com/GrapheneOS/grapheneos.social">grapheneos.social</a>: Mastodon instance</li>
+                    <li><a href="https://github.com/GrapheneOS/infrastructure">infrastructure</a>: 共享的服务器基础设施</li>
+                    <li><a href="https://github.com/GrapheneOS/AttestationServer">AttestationServer</a>: attestation.app远程认证服务器</li>
+                    <li><a href="https://github.com/GrapheneOS/grapheneos.org">grapheneos.org</a>: 我们的网站、HTTP/HTTPS连接检查、HTTPS网络时间、NTP（用于Qualcomm XTRA）、Broadcom PSDS缓存、Samsung PSDS缓存、Qualcomm PSDS（XTRA）缓存、SUPL代理、认证密钥的配置代理、Vanadium组件更新检查和下载代理、网络定位代理和地理编码代理的服务器</li>
+                    <li><a href="https://github.com/GrapheneOS/releases.grapheneos.org">releases.grapheneos.org</a>: 操作系统更新和应用仓库服务器</li>
+                    <li><a href="https://github.com/GrapheneOS/apps.grapheneos.org">apps.grapheneos.org</a>: 应用仓库</li>
+                    <li><a href="https://github.com/GrapheneOS/mail.grapheneos.org">mail.grapheneos.org</a>: 电子邮件服务器</li>
+                    <li><a href="https://github.com/GrapheneOS/matrix.grapheneos.org">matrix.grapheneos.org</a>: Matrix和Element Web服务器</li>
+                    <li><a href="https://github.com/GrapheneOS/ns1.grapheneos.org">ns1.grapheneos.org</a>: 权威DNS服务器</li>
+                    <li><a href="https://github.com/GrapheneOS/discuss.grapheneos.org">discuss.grapheneos.org</a>: 讨论论坛服务器</li>
+                    <li><a href="https://github.com/GrapheneOS/grapheneos.social">grapheneos.social</a>: 长毛象（Mastodon）实例</li>
                 </ul>
             </section>
 
             <section id="utilities">
-                <h2><a href="#utilities">Utilities</a></h2>
+                <h2><a href="#utilities">工具</a></h2>
 
                 <ul>
-                    <li><a href="https://github.com/GrapheneOS/tls-pinning">tls-pinning</a>: Utilities for setting up conservative non-leaf TLS pinning with backup pins</li>
-                    <li><a href="https://github.com/GrapheneOS/branding-tools">branding-tools</a>: Scripting for generating branding</li>
+                    <li><a href="https://github.com/GrapheneOS/tls-pinning">tls-pinning</a>: 用于搭建保守的非叶子TLS钉扎（含备用钉扎）的工具</li>
+                    <li><a href="https://github.com/GrapheneOS/branding-tools">branding-tools</a>: 用于生成品牌标识的脚本</li>
                 </ul>
             </section>
 
             <section id="archive">
-                <h2><a href="#archive">Archive</a></h2>
+                <h2><a href="#archive">旧档案</a></h2>
 
-                <p>An archive of legacy repositories is available via the
-                <a href="https://github.com/GrapheneOS-Archive">GrapheneOS Archive</a>
-                organization. This only covers repositories archives after renaming the project to
-                GrapheneOS. Earlier code is mostly not available via GitHub anymore due to
-                <a href="/history/#history">the unfortunate events</a> leading to the rename of
-                the project.</p>
+                <p>您可以通过<a href="https://github.com/GrapheneOS-Archive">GrapheneOS Archive</a>组织
+                访问历史遗留仓库的档案。
+                这些仅涵盖在项目更名为GrapheneOS后的
+                仓库。由于导致项目更名的<a href="/history/#history">一系列不幸事件</a>，
+                更早的仓库大多已经无法在GitHub上
+                访问了。</p>
             </section>
         </main>
         {% include "footer.html" %}
