@@ -24,7 +24,7 @@ jobs:
     - name: Process static
       run: ./process-static
     - name: Upload as github-pages
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-pages-artifact@v4
       with:
         path: static-tmp/
         name: github-pages
