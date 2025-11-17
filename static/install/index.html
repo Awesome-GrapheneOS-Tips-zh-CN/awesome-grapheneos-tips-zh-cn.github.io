@@ -31,7 +31,7 @@
         [[js|/js/redirect.js]]
     </head>
     <body>
-        {% with current_page="install" %}
+        {% with current_page="install", wip="done" %}
             {% include "header.html" %}
         {% endwith %}
         <main id="install">
@@ -52,7 +52,7 @@
             遵循指南的内容自行操作，然后针对您遇到困难的步骤
             请求帮助。</p>
 
-            <p>命令行方法需要在安装了正确的的fastboot和OpenSSH软件包的操作系统上
+            <p>命令行方法需要在拥有正确的fastboot和OpenSSH软件包的操作系统上
             进行，并且您需要对整个过程有足够的了解，以避免盲目依赖我们
             网站上的指示。而基于网页的安装方法只需要一个支持WebUSB的
             浏览器，不需要其他任何软件，而且您仍然不必完全信任我们的
