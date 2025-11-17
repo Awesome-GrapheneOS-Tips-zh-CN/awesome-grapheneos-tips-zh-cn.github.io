@@ -41,7 +41,7 @@
 
             <p>GrapheneOS的源代码托管在<a
             href="https://github.com/GrapheneOS">GitHub上的GrapheneOS组织</a>中。由于
-            那里有许多代码仓库，本页旨在为源码提供一个导引。在<a
+            项目有大量代码仓库，本页旨在为源码提供一个导引。在<a
             href="/contact#reporting-issues">联系方式页面的报告问题部分</a>有一个
             类似的导引，详述了问题报告应提交的具体位置。</p>
 
@@ -61,20 +61,20 @@
                 <h2><a href="#grapheneos">GrapheneOS</a></h2>
 
                 <p>操作系统的源代码树包含数百个仓库。其中许多
-                仅用于调试、测试或开发，并不是实际
-                用于构建产品发布版本的代码的一部分。清单仓库
-                引用了所有这些仓库。大多数仓库直接使用安卓开源
+                仓库仅用于调试、测试或开发，并不属于实际
+                用于构建生产版本的代码。清单仓库中
+                列出了所有这些仓库。大多数仓库直接使用安卓开源
                 项目（AOSP）的内容，未经修改。几十个仓库，包括操作系统的
-                大部分核心，都是从AOSP分支出来，或是由GrapheneOS独有的。</p>
+                大部分核心部分，都是从AOSP分支出来，或是由GrapheneOS独有的。</p>
 
-                <p>操作系统有一套统一的构建系统，但一些像Chromium的
-                组件过于复杂，无法归入，因此它们以预构建包的形式加入构建，而非
-                移植到AOSP构建系统中。这也是为了开发者的方便和为
-                构建流程的启动考虑，以避免我们要为每个构建平台和目标平台的组合
-                都搭建原生或交叉编译工具链的困境。构建指南在未来会加以
+                <p>操作系统有一套统一的构建系统，但像Chromium的一些
+                组件过于复杂，无法整合，因此它们以预构建包的形式加入构建，而非
+                移植到AOSP构建系统中。这也是为了方便开发者和
+                启动构建流程，避免需要为每个构建平台和目标平台的组合
+                分别搭建原生或交叉编译工具链的困境。构建指南将在未来
                 扩写，来涵盖所有这些内容。</p>
 
-                <p>要查看操作系统源代码树中的所有仓库，请见<a
+                <p>如果您想查看操作系统源代码树中的所有仓库，请见<a
                 href="https://github.com/GrapheneOS/platform_manifest/blob/13/default.xml">清单
                 仓库的default.xml列表</a>。</p>
 
@@ -103,7 +103,7 @@
                     <li><a href="https://github.com/GrapheneOS/device_google_zuma-sepolicy">device_google_zuma-sepolicy</a></li>
                     <li><a href="https://github.com/GrapheneOS/device_google_zumapro">device_google_zumapro</a></li>
                     <li><a href="https://github.com/GrapheneOS/device_google_zumapro-sepolicy">device_google_zumapro-sepolicy</a></li>
-                    <li><a href="https://github.com/GrapheneOS/kernel_configs">kernel_configs</a>: 基础和推荐的内核配置。基础配置由供应商测试套件（VTS）确保，并加以修改，允许GrapheneOS所做的变更。</li>
+                    <li><a href="https://github.com/GrapheneOS/kernel_configs">kernel_configs</a>: 基础和推荐的内核配置。基础配置由供应商测试套件（VTS）确保，并加以修改，以允许GrapheneOS所做的变更。</li>
                     <li><a href="https://github.com/GrapheneOS/platform_art">platform_art</a></li>
                     <li><a href="https://github.com/GrapheneOS/platform_bionic">platform_bionic</a></li>
                     <li><a href="https://github.com/GrapheneOS/platform_bootable_recovery">platform_bootable_recovery</a></li>
@@ -232,7 +232,7 @@
                 <h2><a href="#standalone-apps">独立应用</a></h2>
 
                 <p>这些是由GrapheneOS开发并包含在操作系统中的独立应用项目。
-                这不包括未经GrapheneOS修改或仅作少量修改
+                这里不包括未经GrapheneOS修改或仅作少量修改
                 的AOSP内置应用。</p>
 
                 <ul>
@@ -276,11 +276,11 @@
             <section id="archive">
                 <h2><a href="#archive">旧档案</a></h2>
 
-                <p>通过<a href="https://github.com/GrapheneOS-Archive">GrapheneOS Archive</a>组织
-                可以访问历史遗留仓库的档案。
-                这只涵盖了在项目更名为GrapheneOS后的
-                仓库。更早的仓库大多已经因为导致项目更名的<a
-                href="/history/#history">一系列不幸事件</a>而无法在GitHub上
+                <p>您可以通过<a href="https://github.com/GrapheneOS-Archive">GrapheneOS Archive</a>组织
+                访问历史遗留仓库的档案。
+                这些仅涵盖在项目更名为GrapheneOS后的
+                仓库。由于导致项目更名的<a href="/history/#history">一系列不幸事件</a>，
+                更早的仓库大多已经无法在GitHub上
                 访问了。</p>
             </section>
         </main>
