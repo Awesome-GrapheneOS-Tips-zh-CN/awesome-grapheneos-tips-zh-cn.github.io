@@ -50,13 +50,13 @@
             常见做法那样堆砌一批不安全的功能，然后指望对手
             不知道这些功能的存在，实际上却让隐私性和安全性退步。它是一个非常
             技术性的项目，将隐私和安全融入系统内，而不是囊括一些
-            不起效果的花哨功能或者捆绑一套主观选择的第三方应用。</p>
+            不起效果的花哨功能或者预装一套主观选择的第三方应用。</p>
 
-            <p>GrapheneOS还在努力弥补拒绝捆绑谷歌应用和服务
+            <p>GrapheneOS还在努力弥补拒绝预装谷歌应用和服务
             所带来的空白。我们并不反对用户使用谷歌服务，但它不该
             以侵犯的方式集成在操作系统中。GrapheneOS不会走捷径，仅仅
             将一个非常不完整且安全性较差的第三方的谷歌服务重实现
-            捆绑在操作系统中。那样的做法永远无法供用户依靠。
+            预装在操作系统中。那样的做法永远无法供用户依靠。
             即使目的是让功能得以运作而不在乎做法的
             稳定性和安全性，那样也只会永远追赶一个不断移动的目标，
             同时却只能提供比真实服务更差的安全性。</p>
@@ -234,64 +234,64 @@
                         <h4><a href="#attack-surface-reduction">减少攻击面</a></h4>
 
                         <ul>
-                            <li>Greatly reduced remote, local and proximity-based attack surface by
-                            stripping out unnecessary code, making more features optional and
-                            disabling optional features by default (NFC, Bluetooth, UWB, etc.), when
-                            the screen is locked (USB, USB-C, pogo pins, camera access) and optionally
-                            after a timeout (Bluetooth, Wi-Fi).</li>
-                            <li>Native debugging (ptrace) access is blocked for all bundled apps to
-                            reduce local attack surface. ptrace access is allowed by default for user
-                            installed apps for compatibility, with an option to block it by default. In
-                            both cases, ptrace access can be blocked or allowed manually on a per-app
-                            basis. When an app that is blocked from accessing ptrace tries to use it,
-                            GrapheneOS shows a notification that links the per-app native debugging
-                            settings screen.</li>
+                            <li>去除不必要的代码，让更多的功能从必选变为可选，让
+                            可选功能默认关闭（如NFC、蓝牙、UWB等）或屏幕
+                            锁定时关闭（USB、USB-C、弹簧针接口，相机访问），或
+                            允许设为超时后关闭（蓝牙、WiFi）。这些措施大幅
+                            减少了远程、本地和近源的攻击面。</li>
+                            <li>阻止所有系统预装的应用的原生调试（ptrace）访问，以
+                            减少本地攻击面。为确保兼容性，默认允许用户安装的应用
+                            进行ptrace访问，但可以选择改为默认阻止。在这
+                            两种默认模式下，用户都可以手动针对每个应用阻止和允许ptrace访
+                            问。当一个被阻止ptrace的应用尝试使用它时，GrapheneOS会
+                            弹出通知，通知链接到该应用的原生调试
+                            设置页面。</li>
                         </ul>
 
-                        <h5 id="usb-c-port-and-pogo-pins-control"><a href="#usb-c-port-and-pogo-pins-control">USB-C port and pogo pins control</a></h5>
+                        <h5 id="usb-c-port-and-pogo-pins-control"><a href="#usb-c-port-and-pogo-pins-control">USB-C接口和弹簧针控制</a></h5>
 
-                        <p>Our <b>USB-C port and pogo pins</b> setting protects against attacks
-                        through USB-C or pogo pins while the OS is booted. For the majority of
-                        devices without pogo pins, the setting is labelled <b>USB-C port</b>.</p>
+                        <p>我们的<b>USB-C接口和弹簧针（USB-C port and pogo pins）</b>设置可以防止
+                        在操作系统启动时通过USB-C或弹簧针发起的攻击。在大多数
+                        没有弹簧针的设备上，这项设置显示为<b>USB-C接口（USB-C port）</b>。</p>
 
-                        <p>The feature has five modes:</p>
+                        <p>这一功能有五种模式：</p>
 
                         <ul>
-                            <li>Off</li>
-                            <li>Charging-only</li>
-                            <li>Charging-only when locked</li>
-                            <li>Charging-only when locked, except before first unlock</li>
-                            <li>On</li>
+                            <li>关闭（Off）</li>
+                            <li>仅充电（Charging-only）</li>
+                            <li>锁定时仅充电（Charging-only when locked）</li>
+                            <li>锁定时仅充电，首次解锁前除外（Charging-only when locked, except before first unlock）</li>
+                            <li>开启（On）</li>
                         </ul>
 
-                        <p>The default is <b>Charging-only when locked</b>, which significantly
-                        reduces attack surface when the device is locked. After locking, it blocks
-                        any new USB connections immediately through either USB-C and pogo pins at
-                        both the hardware level via configuring the USB controller and also at the
-                        OS level in the kernel to provide a second layer of defense. It disables the
-                        data lines at a hardware level as soon as the existing connections end which
-                        happens right away if there were no USB connections. It also disables USB-C
-                        alternate modes including DisplayPort at both the OS and hardware level.</p>
+                        <p>默认设置为<b>锁定时仅充电</b>，这一模式在
+                        设备锁定时显著减少了攻击面。锁定后，它会立即
+                        在硬件层面上（通过配置USB控制器）和操作
+                        系统层面上（内核中）阻止
+                        任何通过USB-C或弹簧针的新USB连接，提供双层防护。数据线路
+                        会在现有连接结束时从硬件层面上禁用，如果
+                        没有USB连接，禁用会立刻生效。此外，USB-C的备用模式（包括DisplayPort备用
+                        模式）也会在硬件和操作系统层面上禁用。</p>
 
-                        <p>Our implementation is far more secure than Android's standard USB HAL
-                        toggle available to device admin apps. The standard feature only disables
-                        high level USB handling in the OS. It doesn't block new USB connections or
-                        disable the data lines at a hardware level. It also leaves the handling of
-                        the USB-C and pogo pins protocols enabled in the OS, and it doesn't disable
-                        the USB-C alternate modes. The standard feature is also either blocking or
-                        not blocking USB at a high level, without the ability to block new
-                        connections and disable USB only once the existing connections end. Other
-                        operating systems trying to implement a similar feature via the standard
-                        toggle end up continuing to allow new USB connections in the OS until all
-                        connections end instead of the two-phase approach we use for our two
-                        Charging-only when locked modes.</p>
+                        <p>与安卓供设备管理应用使用的标准USB HAL开关相比，我们的实现
+                        要安全很多。标准功能只会禁用操作系统中的
+                        高层USB处理，而不会在硬件层面上阻止新的USB连接或
+                        禁用数据线路。它还会保留操作系统
+                        对USB和弹簧针协议的处理，并且不会
+                        禁用USB-C备用模式。标准功能也只能全部阻止和
+                        全部开启，并不能只阻止新连接，也
+                        不能仅在现有连接断开后禁用。其他
+                        操作系统尝试通过标准开关实现类似功能时，只会
+                        继续允许新USB连接，直到所有连接
+                        结束，而不是像我们的两个“锁定时仅充电”模式一样
+                        采用两阶段的方法。</p>
 
-                        <p>The highest security <b>Off</b> mode disables charging in addition to
-                        data to remove the remaining attack surface from the USB controller and OS
-                        supporting charging including the USB-PD protocol. There's no risk of the
-                        device not being able to be charged since the overall feature doesn't apply
-                        while the device is powered off, booted into the firmware-based fastboot
-                        mode or the charging, recovery and fastbootd modes.</p>
+                        <p>安全性最高的<b>关闭</b>模式不仅禁用数据，还
+                        禁用充电，从而消除了USB控制器和操作系统支持
+                        充电（包括USB-PD快充协议）所带来的攻击面。这个功能
+                        不会导致设备无法充电，因为当
+                        设备关机，进入基于固件的fastboot模式，或处于充电、恢复
+                        和fastbootd模式时，此功能不会生效。</p>
                     </section>
 
                     <section id="exploit-mitigations">
