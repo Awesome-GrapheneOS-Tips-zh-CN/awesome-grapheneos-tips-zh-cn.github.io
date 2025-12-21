@@ -76,14 +76,14 @@
                         <a href="#grapheneos">GrapheneOS</a>
                         <ul>
                             <li>
-                                <a href="#exploit-protection">防范未知漏洞的利用</a>
+                                <a href="#exploit-protection">防范未知漏洞的攻击</a>
                                 <ul>
-                                    <li><a href="#attack-surface-reduction">缩小攻击面</a>
+                                    <li><a href="#attack-surface-reduction">减少攻击面</a>
                                         <ul>
                                             <li><a href="#usb-c-port-and-pogo-pins-control">USB-C接口和弹簧针控制</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#exploit-mitigations">漏洞利用缓解</a></li>
+                                    <li><a href="#exploit-mitigations">漏洞攻击缓解</a></li>
                                     <li><a href="#improved-sandboxing">改良的沙盒技术</a></li>
                                     <li><a href="#anti-persistence">反持久化 / 检测</a></li>
                                 </ul>
@@ -93,8 +93,8 @@
                             <li><a href="#android-auto">Android Auto</a></li>
                             <li><a href="#network-permission-toggle">网络权限开关</a></li>
                             <li><a href="#sensors-permission-toggle">传感器权限开关</a></li>
-                            <li><a href="#storage-scopes">存储范畴</a></li>
-                            <li><a href="#contact-scopes">联系人范畴</a></li>
+                            <li><a href="#storage-scopes">存储权限范围</a></li>
+                            <li><a href="#contact-scopes">联系人权限范围</a></li>
                             <li><a href="#broad-carrier-support">广泛的运营商支持，不含侵犯式运营商访问权限</a></li>
                             <li><a href="#lte-only-mode">仅LTE模式</a></li>
                             <li><a href="#wifi-privacy">Wi-Fi隐私</a></li>
@@ -142,99 +142,96 @@
             <section id="grapheneos">
                 <h2><a href="#grapheneos">GrapheneOS</a></h2>
 
-                <p>These are the features of GrapheneOS beyond what's provided by version 16 of
-                the Android Open Source Project. It only covers our improvements to AOSP and not
-                baseline features. This section doesn't list features like the standard app
-                sandbox, verified boot, exploit mitigations (ASLR, SSP, Shadow Call Stack, Control
-                Flow Integrity, etc.), permission system (foreground-only and one-time permission
-                grants, scoped file access control, etc.) and so on but rather only our
-                improvements to modern Android. We plan on providing a separate page listing the
-                improvements we've contributed to Android since those features aren't listed here
-                despite being a substantial portion of our overall historical work.</p>
+                <p>以下是GrapheneOS相较于安卓开源项目16版本所增添的
+                功能。它仅涵盖我们对AOSP的改进，不赘述
+                基础功能。本节不列出诸如标准的应用
+                沙盒、启动时验证、漏洞缓解措施（ASLR：地址空间布局随机化、SSP：栈溢出保护、影子调用栈、控制流
+                完整性等）、权限系统（仅前台权限、一次性权限的
+                授予，分区文件访问控制等）等功能，而仅专注于我们
+                对现代安卓做出的改进。我们计划单独提供一个页面，列出
+                我们为安卓贡献的改进，因为这些功能尽管
+                是我们历史工作中一个不小的部分，但却未列于此。</p>
 
                 <section id="exploit-protection">
-                    <h3><a href="#exploit-protection">Defending against exploitation of unknown
-                    vulnerabilities</a></h3>
+                    <h3><a href="#exploit-protection">防范未知漏洞的攻击</a></h3>
 
-                    <p>GrapheneOS is heavily focused on protecting users against attackers
-                    exploiting unknown (0 day) vulnerabilities. Patching vulnerabilities doesn't
-                    protect users before the vulnerability is known to the vendor and has a patch
-                    developed and shipped.</p>
+                    <p>GrapheneOS十分重视在攻击者利用未知（零日）漏洞
+                    时对用户的保护。在厂商知晓并修复漏洞、发布更新
+                    前，打补丁并不能保护用户。</p>
 
-                    <p>Unknown (0 day) vulnerabilities are much more widely used than most realize
-                    to exploit users not just in targeted attacks but in broad deployments.
-                    Project Zero maintains
-                    <a href="https://docs.google.com/spreadsheets/d/1lkNJ0uQwbeC1ZTRrxdtuPLCIl7mlUreoKfSIgajnSyY/view#gid=0">a
-                    spreadsheet</a> tracking zero day exploitation detected in the wild. This is
-                    only a peek into what's happening since it only documents cases where the
-                    attackers were caught exploiting users, often because the attacks are not
-                    targeted but rather deployed on public websites, etc.</p>
+                    <p>利用未知（零日）漏洞的攻击比很多人想象的要
+                    普遍得多，这不仅是用在有针对性的攻击中，还包括大规模的广泛攻击。Project Zero团队
+                    维护着一个<a href="https://docs.google.com/spreadsheets/d/1lkNJ0uQwbeC1ZTRrxdtuPLCIl7mlUreoKfSIgajnSyY/view#gid=0">电子
+                    表格</a>，追踪在野（真实场景中）发现的零日漏洞攻击情况。这只是
+                    现状的冰山一角，因为表格只记录了被发现了的攻击者
+                    利用漏洞的案例，而这些案例能被发现，通常是由于
+                    它们并非有针对性的攻击，而是
+                    通过公共网站等途经大规模部署的。</p>
 
-                    <p>The first line of defense is attack surface reduction. Removing unnecessary
-                    code or exposed attack surface eliminates many vulnerabilities completely.
-                    GrapheneOS avoids removing any useful functionality for end users, but we can
-                    still disable lots of functionality by default and require that users opt-in
-                    to using it to eliminate it for most of them. An example we landed upstream in
-                    Android is disallowing using the kernel's profiling support by default, since
-                    it was and still is a major source of Linux kernel vulnerabilities. Profiling
-                    is now only exposed to apps for developers who enable developer tools, enable
-                    the Android Debug Bridge (ADB) and then use profiling tools via ADB. It's also
-                    only enabled until the next boot. This isn't listed below since it's one of
-                    the features we got implemented in Android itself.</p>
+                    <p>我们的第一道防线是减少攻击面。移除不必要的
+                    代码或暴露的攻击面，可以完全消除许多漏洞。GrapheneOS避免
+                    删除任何对用户有用的功能，但我们还可以
+                    默认关闭许多功能，让用户来主动选择
+                    启用，从而为大部分用户消除这些漏洞。例如，我们贡献给
+                    安卓上游的改进是默认禁止使用内核的性能分析功能，因为
+                    它一直都是Linux内核漏洞的一个主要来源。现在，性能分析
+                    仅开放给启用了开发者工具、开启了安卓调试桥（ADB），并
+                    通过ADB使用性能分析工具的开发者，而且限制为仅在
+                    下一次重启前开放。这个改进我们没有在下面列出，因为它是我们
+                    成功在安卓上游加入实现的案例之一。</p>
 
-                    <p>The next line of defense is preventing an attacker from exploiting a
-                    vulnerability, either by making it impossible, unreliable or at least
-                    meaningfully harder to develop. The vast majority of vulnerabilities are well
-                    understood classes of bugs and exploitation can be prevented by avoiding the
-                    bugs via languages/tooling or preventing exploitation with strong exploit
-                    mitigations. In many cases, vulnerability classes can be completely wiped out
-                    while in many others they can at least be made meaningfully harder to exploit.
-                    Android does a lot of work in this area, and GrapheneOS has helped to advance
-                    this in Android and the Linux kernel. It takes an enormous amount of resources
-                    to develop fundamental fixes for these problems and there's often a high
-                    performance, memory or compatibility cost to deploying them. Mainstream
-                    operating systems usually don't prioritize security over other areas.
-                    GrapheneOS is willing to go further, thus we offer toggles for users to choose
-                    the compromises they prefer instead of forcing it on them. In the meantime,
-                    weaker less complete exploit mitigations can still provide meaningful barriers
-                    against attacks as long as they're developed with a clear threat model.
-                    GrapheneOS is heavily invested in many areas of developing these protections:
-                    developing/deploying memory safe languages/libraries, static/dynamic
-                    analysis tooling and many kinds of mitigations.</p>
+                    <p>下一道防线是通过让漏洞不可用、不可靠，或至少
+                    让攻击工具的开发更加困难，来防止攻击者利用
+                    漏洞。绝大多数漏洞属于几大类已经被深入理解的编程错误。使用
+                    更安全的编程语言和工具规避错误，或是通过强有效的缓解措施来阻断攻击，都可以防止
+                    这种漏洞的攻击。许多情况下，整类的漏洞可以被全部清除，而
+                    在许多其他情况下，也至少可以大幅增加利用它们攻击的难度。安卓
+                    在这一领域做了大量工作，而GrapheneOS帮助推动了在安卓和Linux内核中
+                    这些方面的进步。要开发针对这些问题的根本性修复方案
+                    需要投入巨大的资源，而且部署这种方案时常常会在
+                    性能、内存和兼容性上做出较多的牺牲。主流的
+                    操作系统通常不会将安全置于首位。GrapheneOS愿意
+                    在这一方面做得更好，因此我们为用户提供可调节的开关，让
+                    用户选择自己接受的折衷方案，而不是将开发者的选择强加给他们。此
+                    外，较弱的、不完整的缓解措施，只要基于一个明确的威胁模型
+                    设计，仍可为应对攻击提供有效的屏障。GrapheneOS投入了
+                    大量精力开发这些保护措施：开发、部署
+                    内存安全的语言和库，静态、动态的
+                    分析工具，和许多其他种类的缓解措施。</p>
 
-                    <p>The final line of defense is containment through sandboxing at various
-                    levels: fine-grained sandboxes around a specific context like per site browser
-                    renderers, sandboxes around a specific component like Android's media codec
-                    sandbox and app/workspace sandboxes like the Android app sandbox used to
-                    sandbox each app which is also the basis for user/work profiles. GrapheneOS
-                    improves all of these sandboxes through fortifying the kernel and other base
-                    OS components along with improving the sandboxing policies.</p>
+                    <p>最后一道防线是在多个层级进行沙盒
+                    隔离：围绕特定情境的精细沙盒，如浏览器中每个网站的
+                    渲染器；围绕特定组件的沙盒，如安卓的媒体编码解码器
+                    沙盒；应用和工作空间沙盒，如安卓的应用沙盒，它不仅用于隔离
+                    每一个应用，同时也是多用户和工作资料功能的基础。GrapheneOS通过
+                    加固内核和其他基础操作系统组件、改良沙盒政策
+                    来加固这些沙盒。</p>
 
-                    <p>Preventing an attacker from persisting their control of a component or the
-                    OS/firmware through verified boot and avoiding trust in persistent state
-                    also helps to mitigate the damage after a compromise has occurred.</p>
+                    <p>使用启动时验证、避免信任持久性存储的状态，可以
+                    防止攻击者将其对操作系统和固件的控制加以持久化，也
+                    有助于缓解被入侵所造成的损害。</p>
 
-                    <p>Remote code execution vulnerabilities are the most serious and allow an
-                    attacker to gain a foothold on the device or even substantial control over it
-                    remotely. Local code execution vulnerabilities allow breaking out of a sandbox
-                    including the app sandbox or browser renderer sandbox after either
-                    compromising an app/browser renderer remotely, compromising an app's supply
-                    chain or getting the user to install a malicious app. Many other kinds of
-                    vulnerabilities exist but most of what we're protecting against falls into
-                    these two broad categories.</p>
+                    <p>远程代码执行漏洞是最严重的，它允许攻击者
+                    远程获取在设备上的立足点，甚至是对设备大幅度的
+                    控制。本地代码执行漏洞则允许攻击者突破沙盒限制（包括
+                    应用沙盒和浏览器的渲染器沙盒），但前提是已经
+                    远程攻破一个应用或渲染器、攻破一个应用的供应链或
+                    诱使用户安装一个恶意应用。虽然还有许多其他类型的
+                    漏洞，但我们防范的主要威胁大多归于
+                    这两个大类。</p>
 
-                    <p>The vast majority of local and remote code execution vulnerabilities are
-                    memory corruption bugs caused by memory unsafe languages or rare low-level
-                    unsafe code in an otherwise memory safe language. Most of the remaining issues
-                    are caused by dynamic code execution/loading features. Our main focus is on
-                    preventing or raising the difficulty of exploiting memory corruption bugs
-                    followed by restricting dynamic code execution both to make escalation from a
-                    memory corruption bug harder and to directly mitigate bugs caused by dynamic
-                    code loading/generation/execution such as a JIT compiler bug or a plugin
-                    loading vulnerability.</p>
+                    <p>绝大多数本地和远程代码执行漏洞都是
+                    内存损坏错误，由内存不安全的编程语言，或内存安全语言中罕见的不安全
+                    低层代码导致。剩下的多数问题则是由
+                    动态代码执行、加载功能引起的。我们的主要关注点是
+                    防止对内存损坏错误的利用，或让利用难度增加；接下来
+                    是限制动态代码的执行，以让从内存损坏错误中
+                    提权变得困难，这也直接缓解了由动态代码
+                    加载、生成、执行（如JIT编译器或插件加载漏洞）造成
+                    的错误。</p>
 
                     <section id="attack-surface-reduction">
-                        <h4><a href="#attack-surface-reduction">Attack surface reduction</a></h4>
+                        <h4><a href="#attack-surface-reduction">减少攻击面</a></h4>
 
                         <ul>
                             <li>Greatly reduced remote, local and proximity-based attack surface by

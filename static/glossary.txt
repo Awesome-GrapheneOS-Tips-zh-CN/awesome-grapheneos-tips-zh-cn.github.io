@@ -1,0 +1,58 @@
+英文  采用翻译  参考来源  其他翻译（不采用）
+substantial  实质性/显著/大幅
+sandboxing  沙盒/沙盒机制  https://source.android.google.cn/docs/security/app-sandbox?hl=zh-cn  沙箱
+exploit mitigation  攻击缓解/漏洞利用缓解  https://learn.microsoft.com/zh-cn/defender-endpoint/evaluate-exploit-protection
+permission  权限
+security boundary  安全边界 https://duckduckgo.com/?q=security+boundary+%E5%AE%89%E5%85%A8&ia=web
+toggle  开关
+sensor  传感器
+pogo pins  弹簧针  https://baike.baidu.com/item/pogo%20pin/3768267
+quick tiles  快捷磁贴  https://duckduckgo.com/?q=quick+tiles+%E7%A3%81%E8%B4%B4&ia=web
+features  特色/功能
+WebView  网页视图
+audit  审计  https://baike.baidu.com/item/%E5%AE%89%E5%85%A8%E5%AE%A1%E8%AE%A1/5390213
+attestation  认证  https://developer.android.com/privacy-and-security/security-key-attestation?hl=zh-cn  证明/验证
+attestation key provisioning  认证密钥的配置  https://developer.android.com/privacy-and-security/security-key-attestation?hl=zh-cn
+sandboxed google play compatibility layer  沙盒化谷歌服务兼容层
+command line  命令行
+misguided  受到误导的
+package  软件包
+verified boot  启动时验证
+repository  仓库
+branch  分支
+fork  分支仓库/分支版
+production  生产
+build  构建
+manifest  清单
+release  版本/发布版本
+prebuilt  预构建包
+bootstrap  启动流程
+native  原生
+cross-compile  交叉编译
+component  组件
+toolchain  工具链  https://zh.wikipedia.org/zh-cn/%E5%B7%A5%E5%85%B7%E9%8F%88
+network location  网络定位
+geocoding  地理编码  ??
+authoritative DNS  https://help.aliyun.com/zh/dns/built-in-authoritative-zone-public-dns
+TLS pinning  TLS钉扎  https://cloud.tencent.com/developer/ask/sof/108238461
+attack surface  攻击面
+intrusive  侵犯式
+bundle  捆绑
+ASLR address space layout randomization  地址空间布局随机化  https://zh.wikipedia.org/zh-cn/%E4%BD%8D%E5%9D%80%E7%A9%BA%E9%96%93%E9%85%8D%E7%BD%AE%E9%9A%A8%E6%A9%9F%E8%BC%89%E5%85%A5
+SSP stack smashing protection  栈溢出保护  https://cloud.tencent.com/developer/article/1578337
+shadow call stack  影子调用栈  https://clang.llvm.net.cn/docs/ShadowCallStack.html
+control flow integrity  控制流完整性  https://source.android.google.cn/docs/security/test/kcfi?hl=zh-cn
+scoped storage (android)  分区存储  https://source.android.com/docs/core/storage/scoped
+storage scopes (graphene)  存储权限范围  https://source.android.com/docs/core/storage/scoped
+in the wild  在野/真实场景中
+adb android debug bridge  安卓调试桥  https://developer.android.com/tools/adb?hl=zh-cn
+profiling  性能分析
+upstream  上游
+bug 错误/代码错误
+threat model  威胁模型/威胁建模  https://learn.microsoft.com/zh-cn/training/paths/tm-threat-modeling-fundamentals/
+user profile  多用户  https://source.android.google.cn/docs/devices/admin/multi-user?hl=zh-cn
+work profile  工作资料  https://developer.android.google.cn/work/managed-profiles?hl=zh-cn
+persistent state  持久性存储的状态  https://developer.android.com/courses/android-basics-compose/unit-6?hl=zh-cn https://developer.android.com/develop/ui/compose/touch-input/stylus-input/ink-api-state-preservation?hl=zh-cn
+compromise  被攻陷/被入侵  https://www.microsoft.com/zh-cn/security/business/security-101/what-are-indicators-of-compromise-ioc
+memory corruption  内存损坏  https://cloud.tencent.com/developer/article/2469226
+policy  策略  https://docs.azure.cn/zh-cn/data-explorer/kusto/management/sandbox-policy?view=azure-data-explorer
