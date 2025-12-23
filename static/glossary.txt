@@ -1,7 +1,10 @@
+问题：
+1. *.android.com有机翻
 英文  采用翻译  参考来源  其他翻译（不采用）
+--  安卓网站搜索  https://source.android.com/s/results
 substantial  实质性/显著/大幅
-sandboxing  沙盒/沙盒机制  https://source.android.google.cn/docs/security/app-sandbox?hl=zh-cn  沙箱
-exploit mitigation  攻击缓解/漏洞利用缓解  https://learn.microsoft.com/zh-cn/defender-endpoint/evaluate-exploit-protection
+sandboxing  沙盒/沙盒机制  https://source.android.com/docs/security/app-sandbox?hl=zh-cn  沙箱
+exploit mitigation  攻击缓解/漏洞利用缓解  https://www.cloudflare.com/zh-cn/learning/ddos/ddos-mitigation/
 permission  权限
 security boundary  安全边界 https://duckduckgo.com/?q=security+boundary+%E5%AE%89%E5%85%A8&ia=web
 toggle  开关
@@ -9,10 +12,10 @@ sensor  传感器
 pogo pins  弹簧针  https://baike.baidu.com/item/pogo%20pin/3768267
 quick tiles  快捷磁贴  https://duckduckgo.com/?q=quick+tiles+%E7%A3%81%E8%B4%B4&ia=web
 features  特色/功能
-WebView  网页视图
+WebView  WebView网页视图
 audit  审计  https://baike.baidu.com/item/%E5%AE%89%E5%85%A8%E5%AE%A1%E8%AE%A1/5390213
-attestation  认证  https://developer.android.com/privacy-and-security/security-key-attestation?hl=zh-cn  证明/验证
-attestation key provisioning  认证密钥的配置  https://developer.android.com/privacy-and-security/security-key-attestation?hl=zh-cn
+attestation  认证  https://source.android.com/docs/security/features/keystore/attestation?hl=zh-cn  证明/验证
+attestation key provisioning  认证密钥的配置  https://source.android.com/docs/security/features/keystore/attestation?hl=zh-cn
 sandboxed google play compatibility layer  沙盒化谷歌服务兼容层
 command line  命令行
 misguided  受到误导的
@@ -34,27 +37,41 @@ toolchain  工具链  https://zh.wikipedia.org/zh-cn/%E5%B7%A5%E5%85%B7%E9%8F%88
 network location  网络定位
 geocoding  地理编码  ??
 authoritative DNS  https://help.aliyun.com/zh/dns/built-in-authoritative-zone-public-dns
-TLS pinning  TLS钉扎  https://cloud.tencent.com/developer/ask/sof/108238461
+TLS pinning  TLS固定  https://developer.mozilla.org/zh-CN/docs/Glossary/HPKP  TLS钉扎 TLS锁定
 attack surface  攻击面
 intrusive  侵犯式
 bundle  预装  -  捆绑
 ASLR address space layout randomization  地址空间布局随机化  https://zh.wikipedia.org/zh-cn/%E4%BD%8D%E5%9D%80%E7%A9%BA%E9%96%93%E9%85%8D%E7%BD%AE%E9%9A%A8%E6%A9%9F%E8%BC%89%E5%85%A5
-SSP stack smashing protection  栈溢出保护  https://cloud.tencent.com/developer/article/1578337
+SSP stack smashing protection  栈溢出保护  没有可靠参考：https://duckduckgo.com/?q=%E6%A0%88+%22stack+smashing+protector%22&ia=web
 shadow call stack  影子调用栈  https://clang.llvm.net.cn/docs/ShadowCallStack.html
-control flow integrity  控制流完整性  https://source.android.google.cn/docs/security/test/kcfi?hl=zh-cn
+control flow integrity  控制流完整性  https://source.android.com/docs/security/test/cfi?hl=zh-cn
+PAC pointer authentication code  指针认证代码  https://llvm.gnu.ac.cn/docs/PointerAuth.html#armv8-3-a-pauth-pointer-authentication-code
 scoped storage (android)  分区存储  https://source.android.com/docs/core/storage/scoped
-storage scopes (graphene)  存储权限范围  https://source.android.com/docs/core/storage/scoped
+storage scopes (graphene)  存储权限范围
 in the wild  在野/真实场景中
-adb android debug bridge  安卓调试桥  https://developer.android.com/tools/adb?hl=zh-cn
+adb android debug bridge  安卓调试桥  https://zh.wikipedia.org/zh-hans/Android%E8%B0%83%E8%AF%95%E6%A1%A5 机翻：https://developer.android.com/tools/adb?hl=zh-cn
 profiling  性能分析
 upstream  上游
 bug 错误/代码错误
 threat model  威胁模型/威胁建模  https://learn.microsoft.com/zh-cn/training/paths/tm-threat-modeling-fundamentals/
-user profile  多用户  https://source.android.google.cn/docs/devices/admin/multi-user?hl=zh-cn
-work profile  工作资料  https://developer.android.google.cn/work/managed-profiles?hl=zh-cn
+user profile  多用户  https://source.android.com/docs/devices/admin/multi-user?hl=zh-cn
+work profile  工作资料  https://source.android.com/docs/devices/admin/managed-profiles?hl=zh-cn
 persistent state  持久性存储的状态  https://developer.android.com/courses/android-basics-compose/unit-6?hl=zh-cn https://developer.android.com/develop/ui/compose/touch-input/stylus-input/ink-api-state-preservation?hl=zh-cn
 compromise  被攻陷/被入侵  https://www.microsoft.com/zh-cn/security/business/security-101/what-are-indicators-of-compromise-ioc
-memory corruption  内存损坏  https://cloud.tencent.com/developer/article/2469226
+memory corruption  内存损坏  太常见，却没有可靠来源，而且有歧义：https://www.google.com/search?q=%22%E5%86%85%E5%AD%98%22+corrupt https://www.epicgames.com/help/zh-CN/epic-games-store-c-202300000001639/error-messages-c-202300000001736/easy-anti-cheat-eac-corrupted-memory-a202300000012254  内存踩踏是什么玩意
 policy  策略  https://docs.azure.cn/zh-cn/data-explorer/kusto/management/sandbox-policy?view=azure-data-explorer
-displayport alternate mode  DisplayPort备用模式  https://learn.microsoft.com/zh-cn/windows-hardware/test/hlk/testref/c61c5af8-70ab-4fee-8251-e974fcbfa4f8  DisplayPort替代模式
+displayport alternate mode  DisplayPort替代模式  https://www.dell.com/support/kbdoc/zh-cn/000141328/%E5%9F%BA%E4%BA%8E-usb-c-%E7%9A%84-displayport-%E6%8C%87%E5%8D%97  DisplayPort备用模式
 proximity-based attack  近源攻击  没有可靠来源：https://duckduckgo.com/?q=proximity-based+attack+%E6%94%BB%E5%87%BB&ia=web
+runtime  运行时  https://source.android.com/docs/core/runtime?hl=zh-cn
+spawning  ???生成/派生/生产/启动  https://source.android.com/docs/core/runtime/zygote?hl=zh-cn https://source.android.com/docs/core/virtualization/tryavf?hl=zh-cn
+lifetime  生命周期  https://source.android.com/docs/core/interaction/neural-networks/memory-pools?hl=zh-cn
+out-of-line (malloc metadata)  -  https://cobalt.googlesource.com/cobalt/+/0d1858f87ad39776d3bccd0ec75731daf232e0d3/src/base/allocator/partition_allocator/PartitionAlloc.md
+zero-on-free  释放时填充零  https://source.android.com/docs/security/test/memory-safety?hl=zh-cn 和相邻页面。包括write-after-free等没有很好的参考翻译
+BTI, PAC  分支目标指示器，指针验证  https://www.arm.com/zh-cn/architecture/cpu/a-profile/armv9
+harden  加固
+kernel lockdown > confidentiality mode  内核锁定模式 > 强制保密模式  没有可靠参考：https://cloud.tencent.com/developer/article/1545193
+ahead-of-time  预先编译  https://source.android.com/docs/core/runtime/jit-compiler?hl=zh-cn
+DRM  数字版权管理  https://source.android.com/docs/core/media/drm?hl=zh_cn
+seccomp-bpf  带过滤器的安全计算  https://linuxkernel.org.cn/doc/html/latest/userspace-api/seccomp_filter.html
+storage  存储/存储空间  https://source.android.com/docs/core/storage?hl=zh_cn
+

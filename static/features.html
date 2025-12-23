@@ -83,7 +83,7 @@
                                             <li><a href="#usb-c-port-and-pogo-pins-control">USB-C接口和弹簧针控制</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#exploit-mitigations">漏洞攻击缓解</a></li>
+                                    <li><a href="#exploit-mitigations">漏洞攻击缓解措施</a></li>
                                     <li><a href="#improved-sandboxing">改良的沙盒技术</a></li>
                                     <li><a href="#anti-persistence">反持久化 / 检测</a></li>
                                 </ul>
@@ -120,7 +120,7 @@
                                 </ul>
                             </li>
                             <li><a href="#grapheneos-app-repository">GrapheneOS应用仓库</a></li>
-                            <li><a href="#vanadium">Vanadium：强化的WebView及默认浏览器</a></li>
+                            <li><a href="#vanadium">Vanadium：强化的WebView网页视图及默认浏览器</a></li>
                             <li><a href="#auditor">审计器应用和认证服务</a></li>
                             <li><a href="#grapheneos-camera">GrapheneOS相机</a></li>
                             <li><a href="#grapheneos-pdf-viewer">GrapheneOS PDF阅读器</a></li>
@@ -270,7 +270,7 @@
                         系统层面上（内核中）阻止
                         任何通过USB-C或弹簧针的新USB连接，提供双层防护。数据线路
                         会在现有连接结束时从硬件层面上禁用，如果
-                        没有USB连接，禁用会立刻生效。此外，USB-C的备用模式（包括DisplayPort备用
+                        没有USB连接，禁用会立刻生效。此外，USB-C的替代模式（包括DisplayPort替代
                         模式）也会在硬件和操作系统层面上禁用。</p>
 
                         <p>与安卓供设备管理应用使用的标准USB HAL开关相比，我们的实现
@@ -278,7 +278,7 @@
                         高层USB处理，而不会在硬件层面上阻止新的USB连接或
                         禁用数据线路。它还会保留操作系统
                         对USB和弹簧针协议的处理，并且不会
-                        禁用USB-C备用模式。标准功能也只能全部阻止和
+                        禁用USB-C替代模式。标准功能也只能全部阻止和
                         全部开启，并不能只阻止新连接，也
                         不能仅在现有连接断开后禁用。其他
                         操作系统尝试通过标准开关实现类似功能时，只会
@@ -295,154 +295,150 @@
                     </section>
 
                     <section id="exploit-mitigations">
-                        <h4><a href="#exploit-mitigations">Exploit mitigations</a></h4>
+                        <h4><a href="#exploit-mitigations">漏洞攻击缓解措施</a></h4>
 
                         <ul>
-                            <li>Hardened app runtime</li>
-                            <li><a href="/usage#exec-spawning">Secure application spawning
-                            system</a> avoiding sharing address space layout and other secrets
-                            across applications</li>
-                            <li><a href="https://github.com/GrapheneOS/platform_bionic">Hardened libc</a>
-                            providing defenses against the most common classes of vulnerabilities (memory
-                            corruption)</li>
+                            <li>加固的应用运行时</li>
+                            <li><a href="/usage#exec-spawning">安全的应用启动机制</a>，避免在不同应用之间共享地址空间布局和
+                            其他秘密信息</li>
+                            <li><a href="https://github.com/GrapheneOS/platform_bionic">加固的libc</a>，提供
+                            对最常见漏洞类别（如内存损坏）的
+                            防护</li>
                             <li>
-                                Our own <a href="https://github.com/GrapheneOS/hardened_malloc">hardened
-                                malloc (memory allocator)</a> leveraging modern hardware capabilities
-                                to provide substantial defenses against the most common classes of
-                                vulnerabilities (heap memory corruption) along with reducing the lifetime
-                                of sensitive data in memory. The <a
-                                href="https://github.com/GrapheneOS/hardened_malloc/blob/main/README.md">hardened_malloc
-                                README</a> has extensive documentation on it. The hardened_malloc
-                                project is portable to other Linux-based operating systems and is being
-                                adopted by other security-focused operating systems like secureblue. Our
-                                allocator also heavily influenced the design of the <a
-                                href="https://www.openwall.com/lists/musl/2020/05/13/1">next-generation
-                                musl malloc implementation</a> which offers substantially better security than
-                                musl's previous malloc while still having minimal memory usage and code size.
+                                我们自己的<a href="https://github.com/GrapheneOS/hardened_malloc">hardened
+                                malloc（加固内存分配器）</a>，利用现代硬件能力
+                                提供对最常见类别漏洞（堆内存损坏）的
+                                强有力防御，并减少敏感数据
+                                在内存中的生命周期。<a
+                                href="https://github.com/GrapheneOS/hardened_malloc/blob/main/README.md">hardened_malloc的README</a>有
+                                详细的文档说明。hardened_malloc项目
+                                可以移植到其他基于Linux的操作系统中，现在正被
+                                其他专注安全的操作系统（如secureblue）采用。我们的
+                                分配器也深刻影响了<a
+                                href="https://www.openwall.com/lists/musl/2020/05/13/1">下一代musl内存
+                                分配实现</a>的设计，它在大幅提高旧版musl内存分配器
+                                的安全性的同时，仍保持极小的内存使用和代码规模。
                                 <ul>
-                                    <li>Fully out-of-line metadata with protection from corruption, ruling
-                                    out traditional allocator exploitation</li>
-                                    <li>Separate memory regions for metadata, large allocations and each
-                                    slab allocation size class with high entropy random bases and no
-                                    address space reuse between the different regions</li>
-                                    <li>Deterministic detection of any invalid free</li>
-                                    <li>Zero-on-free with detection of write-after-free via checking that
-                                    memory is still zeroed before handing it out again</li>
-                                    <li>Delayed reuse of address space and memory allocations through the
-                                    combination of deterministic and randomized quarantines to mitigate
-                                    use-after-free vulnerabilities</li>
-                                    <li>Fine-grained randomization</li>
-                                    <li>Aggressive consistency checks</li>
-                                    <li>Memory protected guard regions around allocations larger than 16k
-                                    with randomization of guard region sizes for 128k and above</li>
-                                    <li>Allocations smaller than 16k have guard regions around each of the
-                                    slabs containing allocations (for example, 16 byte allocations are in
-                                    4096 byte slabs with 4096 byte guard regions before and after)</li>
-                                    <li>Random canaries with a leading zero are added to these smaller
-                                    allocations to block C string overflows, absorb small overflows
-                                    and detect linear overflows or other heap corruption when the
-                                    canary value is checked (primarily on free)</li>
-                                    <li>Hardware memory tagging for slab allocations (128k and
-                                    below) providing probabilistic detection of all use-after-free
-                                    and inter-object overflows along with deterministic detection
-                                    of all small/linear overflows and use-after-free until it has
-                                    been reused once and gone through the quarantines twice</li>
+                                    <li>完全不相邻的元数据，含对内存损坏的保护，让
+                                    传统的分配器漏洞攻击无法实现</li>
+                                    <li>为元数据、大规模分配和每个slab分配
+                                    大小类别提供独立的内存区域，使用高熇的随机基址，不同
+                                    区域之间不重复使用地址空间</li>
+                                    <li>对无效释放有确定性的检测机制</li>
+                                    <li>释放时填充零，且在再分配前检查是否
+                                    仍为零，从而检测释放后写入</li>
+                                    <li>延迟地址空间和分配内存的重复使用：使用
+                                    随机性和确定性相结合的隔离方法，缓解
+                                    释放后使用漏洞</li>
+                                    <li>精细化的随机化机制</li>
+                                    <li>激进的完整性检查</li>
+                                    <li>受保护的内存保护区：在16k以上的分配两端添加，保护区
+                                    的大小在分配128k以上时随机化</li>
+                                    <li>小于16k的分配，则在包含该分配的slab两端
+                                    添加保护区。例如，16字节的分配
+                                    使用4096字节的slab，前后各有4096字节的保护区</li>
+                                    <li>对这些较小的分配，添加以零为前导的随机canary（预警
+                                    机制），从而阻挡C字符串溢出，吸收小溢出，并
+                                    在复查时（主要是释放时）检测
+                                    线性溢出或其他堆损坏</li>
+                                    <li>基于硬件的内存标记：针对slab分配（128k及
+                                    以下），这为所有释放后使用和对象间溢出的问题
+                                    提供概率性的检测，并可确定性检测出所有
+                                    小的、线性的溢出和释放后使用（确定性到它
+                                    经过一次复用和两次隔离为止）</li>
                                 </ul>
                             </li>
-                            <li>On ARMv9, Branch Target Identification (BTI) and Pointer
-                            Authentication Code (PAC) return address protection are enabled for
-                            userspace OS code we build instead of only specific apps</li>
-                            <li>Signed integer overflow is made well defined in C and C++ for code
-                            where automatic overflow checking is disabled</li>
+                            <li>在ARMv9上，分支目标指示器（BTI）和指针
+                            验证（PAC）返回地址保护，在我们构建的用户空间操作系统
+                            代码中启用，而不是只在特定应用中启用</li>
+                            <li>在关闭自动溢出检查的代码中，明确定义
+                            有符号整数溢出时的行为</li>
                             <li>
-                                Hardened kernel
+                                加固的内核
                                 <ul>
-                                    <li>4-level page tables are enabled on arm64 to provide a much
-                                    larger address space (48-bit instead of 39-bit) with
-                                    significantly higher entropy Address Space Layout
-                                    Randomization (33-bit instead of 24-bit).</li>
-                                    <li>Basic hardware memory tagging is used in the main kernel
-                                    memory allocators (slab, page_alloc, non-executable vmalloc) to
-                                    provide probabilistic detection of all use-after-free and
-                                    inter-object overflows along with deterministic detection of
-                                    use-after-free until the memory is allocated again (we plan to
-                                    add deterministic detection of small/linear overflows like
-                                    hardened_malloc)</li>
-                                    <li>Random canaries with a leading zero are added to the
-                                    kernel heap (slub) to block C string overflows, absorb small
-                                    overflows and detect linear overflows or other heap corruption
-                                    when the canary value is checked (on free, copies to/from
-                                    userspace, etc.).</li>
-                                    <li>Memory is wiped (zeroed) as soon as it's released in both
-                                    the low-level kernel page allocator and higher level kernel
-                                    heap allocator (slub). This substantially reduces the lifetime
-                                    of sensitive data in memory, mitigates use-after-free
-                                    vulnerabilities and makes most uninitialized data usage
-                                    vulnerabilities harmless. Without our changes, memory that's
-                                    released retains data indefinitely until the memory is handed
-                                    out for other uses and gets partially or fully overwritten by
-                                    new data.</li>
-                                    <li>In early boot, all the memory not being used by the OS is
-                                    zeroed to get rid of any data leftover from a previous boot in
-                                    case zero-on-free didn't have the opportunity to clear it as
-                                    part of a clean reboot/shutdown. All the devices we support have
-                                    a reset attack protection feature we proposed zeroing memory for
-                                    firmware-based boot modes, but we need to finish it up by adding
-                                    it for the OS boot modes ourselves. Fully encrypted RAM with a
-                                    per-boot key cycled on reboots will eventually obsolete these
-                                    features for newer devices.</li>
-                                    <li>Kernel stack allocations are zeroed to make most
-                                    uninitialized data usage vulnerabilities harmless.</li>
-                                    <li>Assorted attack surface reduction through disabling
-                                    features or setting up infrastructure to dynamically
-                                    enable/disable them only as needed (perf, ptrace).</li>
-                                    <li>Assorted upstream hardening features are enabled,
-                                    including many which we played a part in developing and
-                                    landing upstream as part of our linux-hardened project (which
-                                    we intend to revive as a more active project again).</li>
-                                    <li>Forced kernel module signing with per-build RSA 4096 /
-                                    SHA256 keys and lockdown mode set to forced confidentiality
-                                    mode help to enforce a low-level boundary between the kernel
-                                    and userspace even if mistakes are made in SELinux policy or
-                                    there's a deep userspace compromise.</li>
-                                    <li>Additional consistency/integrity checks are enabled for
-                                    frequently targeted kernel data structures.</li>
-                                    <li>On ARMv9, Branch Target Identification (BTI) is enabled in
-                                    addition to Clang type-based Control Flow Integrity (CFI) to
-                                    cover functions excluded from type-based CFI</li>
-                                    <li>On ARMv9, ShadowCallStack (SCS) is enabled in addition to
-                                    Pointer Authentication Code (PAC) return address protection
-                                    instead of only enabling SCS when PAC is unavailable</li>
+                                    <li>在arm64上启用四级页表，从而显著增大
+                                    地址空间（48位，而非39位），并
+                                    显著提高地址空间布局随机化的
+                                    熵值（32比特，而非24比特）。</li>
+                                    <li>内核的主要内存分配器中，使用基本的硬件内存
+                                    标记（slab，page_alloc，不可执行的vmalloc），从而
+                                    提供概率性的检测机制，检测所有释放后使用和
+                                    对象间溢出，以及在下次分配前提供释放后使用
+                                    的确定性检测（我们计划增加像hardened_malloc那样
+                                    对小、线性溢出的确定性
+                                    检测）</li>
+                                    <li>在内核堆（slub）中，添加以零为前导的随机canary（预警
+                                    机制），从而阻挡C字符串溢出，吸收小溢出，并
+                                    在复查canary时（释放时，从/向用户空间复制时等）检测
+                                    线性溢出或其他堆损坏</li>
+                                    <li>内存释放时立即抹除（填充零），在
+                                    低层内核页分配器和更高层的内核堆分配器（slub）中
+                                    都是如此。这极大地减少了敏感数据在
+                                    内存中的生命周期，缓解了释放后使用
+                                    漏洞，并让大多数的未初始化数据使用
+                                    漏洞变得无害。如果没有我们的改进，被释放
+                                    的内存会长期保留其中的数据，直到它被分配
+                                    出去、被新数据全部或部分覆写
+                                    为止。</li>
+                                    <li>在开机初期，所有未被系统使用的内存全部
+                                    填充零，以清除任何上次开机留下的数据。这是为了防止
+                                    释放后填充零机制没有来得及像正常关机或重启时那样，
+                                    将它全部清除。我们支持的所有设备都支持
+                                    一个我们提出的重启攻击保护功能，在
+                                    基于固件的开机模式中将内存清零，但我们需要在基于操作系统
+                                    的开机模式中完成我们的部分，让这一功能完整实现。新设备
+                                    支持的内存完全加密、每次开机更换密钥的机制，在
+                                    未来会淘汰、取代这些功能。</li>
+                                    <li>内核栈分配时填充零，以使大多数的
+                                    未初始化数据使用漏洞变得无害。</li>
+                                    <li>禁用各种功能或设立可以动态
+                                    开启、关闭它们的基础设施，以
+                                    减少各种攻击面（perf，ptrace）。</li>
+                                    <li>启用了各种上游的加固功能，包括
+                                    许多由我们的linux-hardened项目
+                                    参与开发、收录在上游的功能（我们
+                                    打算重启这个项目，让它更活跃）。</li>
+                                    <li>强制内核模块签名，使用每次构建更换的RSA 4096、SHA256密
+                                    钥，并将内核锁定模式设为强制保密
+                                    模式，这样有助于在用户空间和内核之间强制维持一个
+                                    低层的边界，即使在SELinux策略中犯了错误或用户空间被
+                                    严重入侵时也如此。</li>
+                                    <li>为频繁遭受攻击的内核数据结构启用了
+                                    更多的一致性、完整性检查。</li>
+                                    <li>在ARMv9上，除了启用Clang基于类型的控制流完整性（CPI）机制
+                                    外，另启用了分支目标指示器（BTI），从而
+                                    涵盖了基于类型的CFI没有顾及的函数</li>
+                                    <li>在ARMv9上，除了启用指针认证代码（PAC）外，另启用了
+                                    影子调用栈（SCS）的返回地址保护机制，而
+                                    不是只在没有PAC时启用SCS</li>
                                 </ul>
                             </li>
-                            <li>Android Runtime Just-In-Time (JIT) compilation/profiling is fully
-                            disabled and replaced with full ahead-of-time (AOT) compilation. The
-                            only JIT compilation in the base OS is the V8 JavaScript JIT which is
-                            disabled by default for the Vanadium browser with per-site exception
-                            support.</li>
-                            <li>Dynamic code loading for both native code or Java/Kotlin classes is
-                            blocked for nearly the entire base OS. This works alongside verified
-                            boot to prevent base OS processes from running attacker controlled
-                            native code or Java/Kotlin code. The only exceptions from the policy for
-                            the base OS are in-memory code loading for the media DRM sandbox and the
-                            Vanadium JIT compiler being permitted. Vanadium has JIT compilation
-                            disabled by default for every site and for apps using the WebView with
-                            the exception of our PDF Viewer app. Vanadium disables the JIT compiler
-                            by default with a per-site and per-app toggle for it and per-process
-                            enforcement of blocking dynamic code loading implemented with
-                            seccomp-bpf based on the per-site/per-app JIT compiler toggle.</li>
-                            <li>Dynamic code loading for both native code or Java/Kotlin classes can
-                            be disabled for user installed apps via 3 exploit protection toggles:
-                            Dynamic code loading from memory, Dynamic code loading from storage and
-                            WebView JIT. This can also be used to opt-out of the WebView JIT for our
-                            PDF Viewer and dynamic code loading from memory for the Vanadium browser
-                            to disable support for the per-site opt-in to JIT compilation. In order
-                            to make the dynamic code loading toggles more usable, we show a user
-                            facing notification when an app has dynamic code loading from memory or
-                            storage blocked, including a file path being shown when it's blocked
-                            from storage. This allows users to disable it for all their apps and
-                            then enable them for the ones requiring it.</li>
-                            <li>Filesystem access hardening</li>
+                            <li>安卓的运行时中的即时（JIT）编译、性能分析功能已完全
+                            禁用，而完全用预先编译（AOT）取代。基础操作系统
+                            中唯一的即时编译是V8 JavaScript JIT。它在Vanadium浏览
+                            器中默认禁用，但支持按站点设置
+                            例外。</li>
+                            <li>几乎整个基础操作系统中，原生代码和Java、Kotlin类
+                            的动态代码加载都被阻止。这可以与启动时验证
+                            一同，防止基础操作系统的进程运行由攻击者控制
+                            的原生代码和Java、Kotlin代码。基础操作系统中仅有的
+                            例外是数字版权管理（DRM）沙盒的内存代码加载，以
+                            及Vanadium的JIT编译器。Vanadium默认关闭JIT编译器，但
+                            支持按站点、按应用设置例外，还有按进程
+                            施行的动态代码加载阻止机制，它根据
+                            按站点、按应用的开关用seccomp-bpf（带过滤器的安全计算）实现。</li>
+                            <li>用户安装的应用中，原生代码和Java、Kotlin类的动态代码加载可以
+                            通过三个攻击防护开关来禁用：从
+                            内存加载动态代码，从存储空间加载动态代码，和WebView网页视图
+                            的JIT编译器。这也可以用来选择拒用
+                            我们的PDF阅读器的WebView JIT，或通过禁用Vanadium浏览器从内存加载动态代码的
+                            功能来拒用它对按站点允许JIT编译的支持。为了
+                            让动态代码加载开关更易用，我们会在
+                            有应用被阻止加载动态代码时弹出一个面向用户的
+                            通知，包括要从存储空间加载的
+                            路径。这让用户能够在全局禁用，然后
+                            在必须使用它的应用中启用。</li>
+                            <li>加固文件系统访问</li>
                         </ul>
                     </section>
 
